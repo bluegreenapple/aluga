@@ -3,6 +3,12 @@
   "version": "0.0.0",
   "main": "server.js",
   "dependencies": {
+    "docxtemplater": "latest",
+    "method-override": "~2.1.1",
+    "moment-timezone": "^0.4.0",
+    "money-math": "^2.1.0",
+    "numeral": "^1.5.3",
+    
     "async": "^1.2.1",
     "bcryptjs": "^2.1.0",
     "body-parser": "^1.13.1",

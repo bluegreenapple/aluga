@@ -21,6 +21,10 @@ var request = require('request');
 
 var config = require('./config');
 
+var methodOverride = require('method-override');
+
+
+
 var userSchema = new mongoose.Schema({
   email: { type: String, unique: true, lowercase: true },
   password: { type: String, select: false },
@@ -65,6 +69,7 @@ app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-Method-Override header in the request
 
 // Force HTTPS on Heroku
 if (app.get('env') === 'production') {
@@ -74,6 +79,14 @@ if (app.get('env') === 'production') {
   });
 }
 app.use(express.static(path.join(__dirname, '../../client')));
+
+/*
+ |--------------------------------------------------------------------------
+ | Aluguel API
+ |--------------------------------------------------------------------------
+ */
+
+require('./routes.js')(app);
 
 /*
  |--------------------------------------------------------------------------
