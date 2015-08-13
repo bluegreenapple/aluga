@@ -20,6 +20,20 @@
         </tr>
         </thead>
         
+        <tbody>
+          <tr>
+            <td>
+              <button class="glyphicon glyphicon-pencil" ng-click="rowform.$show()"></button>
+            </td>
+            <td>
+              <button class="glyphicon glyphicon-trash" ng-click="deleteTodo(gridItem._id)"></button>
+            </td>
+            <td>
+              <a class = "glyphicon glyphicon-download-alt" ng-href="/api/download/{{gridItem._id}}" target="_self"></A>
+            </td>
+          </tr>
+
+        </tbody>
 
         </table>
         <!-- FIM LISTA DE CONTRATOS -->
@@ -139,6 +153,7 @@
     
     <tab heading="Hóspedes">
     </tab>
+
     
   </tabset>
 </div>

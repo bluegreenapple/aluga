@@ -37,7 +37,26 @@ angular.module('MyApp', ['ngResource', 'ngMessages', 'ui.router', 'mgcrea.ngStra
             return deferred.promise;
           }
         }
-      });
+      })
+      .state('dashboard', {
+        url: '/dashboard',
+        templateUrl: 'partials/dashboard.html',
+        controller: 'DashboardCtrl',
+        resolve: {
+          authenticated: function($q, $location, $auth) {
+            var deferred = $q.defer();
+
+            if (!$auth.isAuthenticated()) {
+              $location.path('/login');
+            } else {
+              deferred.resolve();
+            }
+
+            return deferred.promise;
+          }
+        }
+      })
+      ;
 
     $urlRouterProvider.otherwise('/');
 

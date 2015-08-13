@@ -13,7 +13,7 @@
   <link href="//cdn.jsdelivr.net/animatecss/3.2.0/animate.css" rel="stylesheet">
   <link href="/stylesheets/styles.css" rel="stylesheet">
   <link href="/bower_components/tr-ng-grid/trNgGrid.min.css" rel="stylesheet" >
-  <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+  <!-- <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/> -->
 </head>
 
 <body>
@@ -25,6 +25,7 @@
   <ul class="nav navbar-nav">
     <li><a href="/#/">Home</a></li>
     <li ng-if="isAuthenticated()"><a href="/#/profile">Profile</a></li>
+    <li ng-if="isAuthenticated()"><a href="/#/dashboard">Dashboard</a></li>
   </ul>
   <ul ng-if="!isAuthenticated()" class="nav navbar-nav pull-right">
     <li><a href="/#/login">Login</a></li>
@@ -63,7 +64,7 @@
 <script src="/services/account.js"></script>
 <script src="/services/todos.js"></script>
 <script src="/bower_components/tr-ng-grid/trNgGrid.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script> -->
 </body>
 
 </html>
