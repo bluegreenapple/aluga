@@ -3,22 +3,30 @@
   "version": "0.0.0",
   "main": "server.js",
   "dependencies": {
-    "docxtemplater": "latest",
-    "method-override": "~2.1.1",
-    "moment-timezone": "^0.4.0",
-    "money-math": "^2.1.0",
-    "numeral": "^1.5.3",
-    
+    "angular-input-masks": "^2.0.0",
     "async": "^1.2.1",
     "bcryptjs": "^2.1.0",
     "body-parser": "^1.13.1",
     "colors": "^1.1.2",
     "cors": "^2.7.1",
+    "docxtemplater": "latest",
     "express": "^4.13.0",
     "jwt-simple": "^0.3.0",
+    "method-override": "~2.1.1",
     "moment": "^2.10.3",
+    "moment-timezone": "^0.4.0",
+    "money-math": "^2.1.0",
     "mongoose": "^4.0.6",
     "morgan": "^1.6.0",
+    "numeral": "^1.5.3",
     "request": "^2.58.0"
+  },
+  "devDependencies": {
+    "browserify": "latest",
+    "watchify": "latest"
+  },
+  "scripts": {
+    "watch_01": "watchify ../../client/app.js -o ../../client/appBundle.js -dv",
+    "watch": "npm run watch_01"
   }
 }
