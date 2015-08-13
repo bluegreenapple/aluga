@@ -1,57 +1,26 @@
 <div class="container">
 
   <tabset>
+    
     <tab heading="Aluguéis">
+
       <div ng-controller = "mainController">
         <!-- LISTA DE CONTRATOS -->
-    <div id="todo-list" class="row">
-      <div class="col-sm-4">
+        <table tr-ng-grid="" items="todos" fields="['imovel', 'locador', 'locador_nomeAssinatura', 'text', 'valorTotal', 'dataDeEntrada', 'dataDeSaida']" page-items="20">
+        <thead>
+        <tr>
+        </th><th field-name="imovel" display-name="Imóvel">
+           </th><th field-name="text" display-name="Hóspede">
+           </th><th field-name="locador_nomeAssinatura" display-name="Assinatura">
+           </th><th field-name="valorTotal" display-name="Valor" display-format="currency: 'R$' ">
+           </th><th field-name="dataDeEntrada" display-name="Data de Entrada" display-format="date:'dd/MM/yyyy' :'UTC'">
+         </th><th field-name="dataDeSaida" display-name="Data de Saída" display-format="date:'dd/MM/yyyy' :'UTC'">
 
-
-        <div>
-          <table class = 'tabela'>
-          <tr>
-            <th>Deletar</th>
-            <!-- <th>id</th> -->
-            <th>Imóvel</th>
-            <th>Locador</th>
-            <th>Assinatura</th>
-            <th>Conta</th>
-            <th>Nome do Hóspede</th>
-            <th>Valor Total</th>
-              <th>Data de Entrada</th>
-              <th>Data de Saída</th>
-              <!-- <th>Horário de Entrada</th>
-              <th>Horário de Saída</th> -->
-            <th>Contrato</th>
-             <!-- <th>Horário de Entrada</th>
-             <th>Horário de Saída</th> -->
-           </tr>
-            <tr ng-repeat="todo in todos">
-              <td><input type="checkbox" ng-click="deleteTodo(todo._id)"> </td>
-              <!-- <td>{{ todo._id }}</td> -->
-              <td>{{ todo.imovel }}</td>
-              <td>{{ todo.locador }}</td>
-              <td>{{ todo.locador_nomeAssinatura }}</td>
-              <td>{{ todo.locador_conta }}</td>
-              <td>{{ todo.text }}</td>
-              <td>{{ todo.valorTotal }}</td>
-              <td>{{ todo.dataDeEntrada | date: "dd/MM/yyyy" : "UTC"}}</td>
-              <td>{{ todo.dataDeSaida | date: "dd/MM/yyyy" : "UTC"}}</td>
-              <!-- <td>{{ todo.horarioDeEntrada | date: "HH:mm:ss"}}</td>
-              <td>{{ todo.horarioDeSaida | date: "HH:mm:ss"}}</td> -->
-              <!-- <td><button type="submit" class="btn btn-primary btn-sm" ng-click="downloadContract(todo._id)">Baixar</button></td>     -->
-              <td><a ng-href="/api/download/{{todo._id}}" target="_self">a</A></td>   
-            </tr>
-          </table>
-        </div>
-
-        <p class="text-center" ng-show="loading">
-          <span class="fa fa-spinner fa-spin fa-3x"></span>
-        </p>
-
-      </div>
-    </div>
+        </tr>
+        </thead>
+        
+        </table>
+        <!-- FIM LISTA DE CONTRATOS -->
 
       </div>
     </tab>
