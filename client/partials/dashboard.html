@@ -11,12 +11,13 @@
         <table tr-ng-grid="" items="todos" fields="['imovel', 'locador', 'locador_nomeAssinatura', 'text', 'valorTotal', 'dataDeEntrada', 'dataDeSaida']" page-items="20">
         <thead>
         <tr>
-        </th><th field-name="imovel" display-name="Imóvel"> 
-           </th><th field-name="text" display-name="Hóspede">
-           </th><th field-name="locador_nomeAssinatura" display-name="Assinatura">
-           </th><th field-name="valorTotal" display-name="Valor" display-format="currency: 'R$' ">
-           </th><th field-name="dataDeEntrada" display-name="Entrada" display-format="date:'dd/MM/yyyy' :'UTC'">
-           </th><th field-name="dataDeSaida" display-name="Saída" display-format="date:'dd/MM/yyyy' :'UTC'">
+        </th><th field-name="imovel" display-name="Imóvel" enable-filtering="false"> 
+           </th><th field-name="text" display-name="Hóspede"  enable-filtering="false">
+         </th><th field-name="locador" display-name="Locador"  enable-filtering="false">
+           </th><th field-name="locador_nomeAssinatura" display-name="Assinatura"  enable-filtering="false">
+           </th><th field-name="valorTotal" display-name="Valor" display-format="currency: 'R$' "  enable-filtering="false">
+           </th><th field-name="dataDeEntrada" display-name="Entrada" display-format="date:'dd/MM/yyyy' :'UTC'"  enable-filtering="false">
+           </th><th field-name="dataDeSaida" display-name="Saída" display-format="date:'dd/MM/yyyy' :'UTC'"  enable-filtering="false">
         </tr>
         </thead>
         
