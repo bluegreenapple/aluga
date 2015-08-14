@@ -1,0 +1,159 @@
+<div class="container">
+
+  <tabset>
+
+    <!-- TAB ALUGUEIS -->
+    <tab heading="Aluguéis">
+
+      <!-- MAIN CONTROLLER -->
+      <!-- <div ng-controller = "DashboardCtrl"> -->
+        <!-- LISTA DE CONTRATOS -->
+        <!-- <table tr-ng-grid="" items="todos" fields="['imovel', 'locador', 'locador_nomeAssinatura', 'text', 'valorTotal', 'dataDeEntrada', 'dataDeSaida']" page-items="20">
+        <thead>
+        <tr>
+        </th><th field-name="imovel" display-name="Imóvel"> 
+           </th><th field-name="text" display-name="Hóspede">
+           </th><th field-name="locador_nomeAssinatura" display-name="Assinatura">
+           </th><th field-name="valorTotal" display-name="Valor" display-format="currency: 'R$' ">
+           </th><th field-name="dataDeEntrada" display-name="Entrada" display-format="date:'dd/MM/yyyy' :'UTC'">
+           </th><th field-name="dataDeSaida" display-name="Saída" display-format="date:'dd/MM/yyyy' :'UTC'">
+        </tr>
+        </thead>
+        
+        <tbody>
+          <tr>
+            <td>
+              <button class="glyphicon glyphicon-pencil" ng-click="rowform.$show()"></button>
+            </td>
+            <td>
+              <button class="glyphicon glyphicon-trash" ng-click="deleteTodo(gridItem._id)"></button>
+            </td>
+            <td>
+              <a class = "glyphicon glyphicon-download-alt" ng-href="/api/download/{{gridItem._id}}" target="_self"></A>
+            </td>
+          </tr>
+
+        </tbody>
+
+        </table> -->
+        <!-- FIM LISTA DE CONTRATOS -->
+
+        <div class="panel panel-default">
+        <div class="panel-heading">Novo Aluguel</div>
+        <div class="panel-body">
+          <legend><i class="ion-link"></i> Linked Accounts</legend>
+          <!-- CADASTRAR NOVO ALUGUEL -->
+        <div id="todo-form" class="row col-sm-8">
+          
+          <form>
+            <!-- radio escolha do imovel-->
+            <div class="btn-group">
+              <label class="btn btn-primary" ng-model="formData.imovel" btn-radio="'Ev64'">Ev64</label>
+              <label class="btn btn-primary" ng-model="formData.imovel" btn-radio="'Ev75'">Ev75</label>
+              <label class="btn btn-primary" ng-model="formData.imovel" btn-radio="'Acqua'">Acqua</label>
+              <label class="btn btn-primary" ng-model="formData.imovel" btn-radio="'Casagrande'">Casagrande</label>
+              <h4>Imovel Escolhido</h4>
+               <pre>{{formData.imovel}}</pre>
+            </div>
+            <!-- FIM radio escolha do imovel-->
+
+            <!-- radio escolha do locador-->
+            <div class="btn-group">
+              <label class="btn btn-primary" ng-model="formData.locador" btn-radio="'TaiYang'">TaiYang</label>
+              <label class="btn btn-primary" ng-model="formData.locador" btn-radio="'Tjin'">Tjin</label>
+              <h4>Locador</h4>
+               <pre>{{formData.locador}}</pre>
+            </div>
+            <!-- FIM radio escolha do locador_nomeAssinatura-->
+
+            <!-- radio escolha do locador_nomeAssinatura-->
+            <div class="btn-group">
+              <label class="btn btn-primary" ng-model="formData.locador_nomeAssinatura" btn-radio="'Rony'">Rony</label>
+              <label class="btn btn-primary" ng-model="formData.locador_nomeAssinatura" btn-radio="'Tjin'">Tjin</label>
+              <label class="btn btn-primary" ng-model="formData.locador_nomeAssinatura" btn-radio="'Kion'">Kion</label>
+              <h4>Assinatura</h4>
+              <pre>{{formData.locador_nomeAssinatura}}</pre>
+            </div>
+              <!-- FIM radio escolha do locador_nomeAssinatura-->
+
+              <!-- radio escolha do locador_conta-->
+            <div class="btn-group">
+              <label class="btn btn-primary" ng-model="formData.locador_conta" btn-radio="'TaiYang_BB'">TaiYang_BB</label>
+              <label class="btn btn-primary" ng-model="formData.locador_conta" btn-radio="'Rony_Bradesco'">Rony_Bradesco</label>
+              <label class="btn btn-primary" ng-model="formData.locador_conta" btn-radio="'Tjin_Santander'">Tjin_Santander</label>
+              <h4>Conta</h4>
+              <pre>{{formData.locador_conta}}</pre>
+            </div>
+            <!-- FIM radio escolha do locador_conta-->
+
+            <div class="form-group">
+              <!-- ESCOLHA DO NOME -->
+              <div class="col-md-6">
+                <label>Nome</label>
+                <input type="text" class="form-control input-lg " ng-model="formData.text" required autofocus></input>
+              </div>
+              <!-- FIM ESCOLHA DO NOME -->
+
+              <!-- ESCOLHA DO VALOR TOTAL -->
+              <div class="col-md-6">
+                <label>Valor Total</label>
+                <input type="text" class="form-control input-lg " ng-model="formData.valorTotal" ui-money-mask="2" required></input>
+              </div>
+              <!-- FIM ESCOLHA DO VALOR TOTAL -->
+
+              <!-- DATA DE ENTRADA -->
+              <div class="col-md-6">
+                <label>Data de Entrada</label>
+                <p class="input-group">
+                  <input type="date" class="form-control input-lg" datepicker-popup ng-model="formData.dataDeEntrada" ng-model-options="{ timezone: 'UTC' }" is-open="opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                  <!-- {{formData.dataDeEntrada}} -->
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-lg" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                  </span>
+                </p>
+              </div>
+              <!-- FIM DATA DE ENTRADA -->
+
+              <!-- DATA DE SAIDA -->
+              <div class="col-md-6">
+                <label>Data de Saída</label>
+                <p class="input-group">
+                  <input type="date" class="form-control input-lg" datepicker-popup ng-model="formData.dataDeSaida" ng-model-options="{ timezone: 'UTC' }" is-open="opened2" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-lg" ng-click="open2($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                  </span>
+                </p>
+              </div>
+
+              <!-- FIM DATA DE SAIDA -->
+
+              <!-- BOTÃO ADICIONAR -->
+              <button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add
+              </button>
+              <!-- FIM BOTÃO ADICIONAR -->
+            </div>
+
+          </form>
+        </div>
+        <!-- FIM CADASTRAR NOVO ALUGUEL-->
+        </div>
+
+
+  </div>
+
+
+      <!-- </div> -->
+      <!-- FIM MAIN CONTROLLER -->
+
+    </tab>
+    <!-- FIM TAB ALUGUEIS -->
+
+    <tab heading="Imóveis">
+    </tab>
+    
+    <tab heading="Hóspedes">
+    </tab>
+
+    
+  </tabset>
+</div>

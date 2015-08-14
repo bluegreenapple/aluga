@@ -1,9 +1,23 @@
-angular.module('MyApp', ['ngResource', 'ngMessages', 'ui.router', 'mgcrea.ngStrap', 'satellizer'])
+angular.module('MyApp', ['ngResource', 'ngMessages', 'ui.router', 'ui.bootstrap', 'todoService', 'mgcrea.ngStrap', 'satellizer'])
   .config(function($stateProvider, $urlRouterProvider, $authProvider) {
     $stateProvider
       .state('home', {
         url: '/',
-        templateUrl: 'partials/home.html'
+        templateUrl: 'partials/home.html',
+        resolve: {
+          authenticated: function($q, $location, $auth) {
+            var deferred = $q.defer();
+
+            if ($auth.isAuthenticated()) {
+              $location.path('/dashboard');
+            } 
+            else {
+              deferred.resolve();
+            }
+            
+            return deferred.promise;
+          }
+        }
       })
       .state('login', {
         url: '/login',
@@ -19,6 +33,24 @@ angular.module('MyApp', ['ngResource', 'ngMessages', 'ui.router', 'mgcrea.ngStra
         url: '/logout',
         template: null,
         controller: 'LogoutCtrl'
+      })
+      .state('dashboard', {
+        url: '/dashboard',
+        templateUrl: 'partials/dashboard.html',
+        controller: 'DashboardCtrl',
+        resolve: {
+          authenticated: function($q, $location, $auth) {
+            var deferred = $q.defer();
+
+            if (!$auth.isAuthenticated()) {
+              $location.path('/login');
+            } else {
+              deferred.resolve();
+            }
+
+            return deferred.promise;
+          }
+        }
       })
       .state('profile', {
         url: '/profile',

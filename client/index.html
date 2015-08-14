@@ -15,10 +15,11 @@
 <body>
 <div ng-controller="NavbarCtrl" class="navbar navbar-default navbar-static-top">
   <div class="navbar-header">
-    <a class="navbar-brand" href="/"><i class="ion-ios7-pulse-strong"></i> Satellizer</a>
+    <a class="navbar-brand" href="/"><i class="ion-ios7-pulse-strong"></i> Contrato Fácil</a>
   </div>
   <ul class="nav navbar-nav">
-    <li><a href="/#/">Home</a></li>
+
+    <li ng-if="isAuthenticated()"><a href="/#/dashboard">Dashboard</a></li>
     <li ng-if="isAuthenticated()"><a href="/#/profile">Profile</a></li>
   </ul>
   <ul ng-if="!isAuthenticated()" class="nav navbar-nav pull-right">
@@ -45,6 +46,7 @@
 
 <!-- Application Code -->
 <script src="/app.js"></script>
+<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
 <script src="/directives/passwordStrength.js"></script>
 <script src="/directives/passwordMatch.js"></script>
 <script src="/controllers/login.js"></script>
@@ -52,6 +54,10 @@
 <script src="/controllers/logout.js"></script>
 <script src="/controllers/profile.js"></script>
 <script src="/controllers/navbar.js"></script>
+<script src="/controllers/dashboard.js"></script>
 <script src="/services/account.js"></script>
+<script src="/services/todos.js"></script>
+
+
 </body>
 </html>
