@@ -34,7 +34,9 @@ angular.module('MyApp', ['ngResource', 'ngMessages', 'ui.router', 'ui.bootstrap'
         template: null,
         controller: 'LogoutCtrl'
       })
+
       .state('dashboard', {
+        abstract: 'true',
         url: '/dashboard',
         templateUrl: 'partials/dashboard.html',
         controller: 'DashboardCtrl',
@@ -52,6 +54,61 @@ angular.module('MyApp', ['ngResource', 'ngMessages', 'ui.router', 'ui.bootstrap'
           }
         }
       })
+
+      .state('dashboard.tabs', {
+        // abstract: 'true',
+        url: '',
+        views: {
+            'imoveis': {
+                templateUrl: 'partials/imoveis.html'
+            },
+            'alugueis': {
+                templateUrl: 'partials/alugueis.html',
+                // controller: 'AlugueisCtrl'
+            },
+            'hospedes': {
+                templateUrl: 'partials/alugueis.html',
+                // controller: 'DashboardController'
+            }
+        }
+      })
+
+      // estado abstrato da aba aluguéis
+      .state('dashboard.tabs.alugueis', {
+        // abstract: true,
+        url: '',
+        templateUrl: 'partials/alugueis.html',
+        controller: 'DashboardCtrl'
+      })
+
+      // // estado criar novo da aba aluguéis
+      // .state('dashboard.tabs.alugueis.lista', {
+      //   url: '/lista',
+      //   templateUrl: 'partials/alugueis.lista.html',
+      //   // controller: 'DashboardCtrl'
+      // })
+
+      // // estado criar novo da aba aluguéis
+      // .state('dashboard.tabs.alugueis.novo', {
+      //   url: '/novo',
+      //   templateUrl: 'partials/alugueis.novo.html',
+      //   // controller: 'DashboardCtrl'
+      // })
+
+
+
+      // .state('dashboard.imoveis', {
+      //   url: '/dashboard/imoveis',
+      //   templateUrl: 'partials/imoveis.html',
+      //   controller: 'ImoveisCtrl'
+      // })
+
+      // .state('dashboard.hospedes', {
+      //   url: '/dashboard/hospedes',
+      //   templateUrl: 'partials/hospedes.html',
+      //   controller: 'HospedesCtrl'
+      // })
+
       .state('profile', {
         url: '/profile',
         templateUrl: 'partials/profile.html',
