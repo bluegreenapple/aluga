@@ -18,14 +18,14 @@ angular.module('MyApp')
 
 		// GETTERS
 		//added for smarttable sort does not work with date strings
-		  $scope.getters={
-		   dataDeEntrada:function(row){
-		      return new Date(row.dataDeEntrada);
-		   },
-		   dataDeSaida:function(row){
-		      return new Date(row.dataDeSaida);
-		   }
-		  }
+		$scope.getters={
+		dataDeEntrada:function(row){
+		  return new Date(row.dataDeEntrada);
+		},
+		dataDeSaida:function(row){
+		  return new Date(row.dataDeSaida);
+		}
+		}
 
 		// CREATE ==================================================================
 		// when submitting the add form, send the text to the node API
