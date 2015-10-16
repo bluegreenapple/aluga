@@ -16,6 +16,17 @@ angular.module('MyApp')
 				$scope.loading = false;
 			});
 
+		// GETTERS
+		//added for smarttable sort does not work with date strings
+		  $scope.getters={
+		   dataDeEntrada:function(row){
+		      return new Date(row.dataDeEntrada);
+		   },
+		   dataDeSaida:function(row){
+		      return new Date(row.dataDeSaida);
+		   }
+		  }
+
 		// CREATE ==================================================================
 		// when submitting the add form, send the text to the node API
 		$scope.createTodo = function() {
@@ -80,29 +91,42 @@ angular.module('MyApp')
 	    startingDay: 1
 	  };
 
-	  $scope.edit = function(todo) {
-	    $scope.isEditing = true;
-	    if ($scope.formData.text != undefined) {
-	      $scope.loading = true;
-      
-	      // call the create function from our service (returns a promise object)
-	      Todos.update($scope.formData)
+	 //  $scope.downloadContract = function(id) {
+		// 	console.log('uauaua');
+		// 	Todos.downloadContract(id);
+		// };
 
-	        // if successful creation, call our get function to get all the new analises
-	        .success(function(data) {
-	          	$scope.loading = false;
-				$scope.formData = {}; // clear the form so our user is ready to enter another
-				$scope.formData.imovel = "Ev64";
-				$scope.formData.locador = "TaiYang";
-				$scope.formData.locador_nomeAssinatura = "Rony";
-				$scope.formData.locador_conta = "TaiYang_BB";
-				$scope.todos = data; // assign our new list of todos
-	        });
-	    }
+	  $scope.edit = function(id) {
+
+	  	alert('!!!');
+	  	console.log('sswsws');
+	    $scope.isEditing = !$scope.isEditing;
+	   //  if ($scope.formData.text != undefined) {
+	   //    $scope.loading = true;
+      
+	   //    // call the create function from our service (returns a promise object)
+	   //    Todos.update($scope.formData)
+
+	   //      // if successful creation, call our get function to get all the new analises
+	   //      .success(function(data) {
+	   //        	$scope.loading = false;
+				// $scope.formData = {}; // clear the form so our user is ready to enter another
+				// $scope.formData.imovel = "Ev64";
+				// $scope.formData.locador = "TaiYang";
+				// $scope.formData.locador_nomeAssinatura = "Rony";
+				// $scope.formData.locador_conta = "TaiYang_BB";
+				// $scope.todos = data; // assign our new list of todos
+	   //      });
+	   //  }
 	  };
 
 	  $scope.cancelEdit = function() {
-	  	$scope.formData = {};
+	  	$scope.loading = false;
+		$scope.formData = {}; // clear the form so our user is ready to enter another
+		$scope.formData.imovel = "Ev64";
+		$scope.formData.locador = "TaiYang";
+		$scope.formData.locador_nomeAssinatura = "Rony";
+		$scope.formData.locador_conta = "TaiYang_BB";
 	    $scope.isEditing = false;
 	  };
 
@@ -110,35 +134,6 @@ angular.module('MyApp')
 	    $scope.isEditing = false;
 	  };
 
-	  $scope.new = function() {
-	    $scope.isEditing = true;
-	  };
-
-	  $scope.cancelNew = function() {
-	    $scope.formData = {};
-	    $scope.isEditing = false;
-	  };
-
-	  $scope.confirmNew = function() {
-	  	if ($scope.formData.text != undefined) {
-				$scope.loading = true;
-
-				// call the create function from our service (returns a promise object)
-				Todos.create($scope.formData)
-
-					// if successful creation, call our get function to get all the new todos
-					.success(function(data) {
-						$scope.loading = false;
-						$scope.formData = {}; // clear the form so our user is ready to enter another
-						$scope.formData.imovel = "Ev64";
-						$scope.formData.locador = "TaiYang";
-						$scope.formData.locador_nomeAssinatura = "Rony";
-						$scope.formData.locador_conta = "TaiYang_BB";
-						$scope.todos = data; // assign our new list of todos
-					});
-			}
-	    $scope.isEditing = false;
-	  };
 
 
 	}]);

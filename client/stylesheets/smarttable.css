@@ -1,0 +1,18 @@
+.sortable {
+  cursor: pointer;
+}
+.sortable:after {
+  font-family: FontAwesome;
+  content: "\f0dc";
+  padding-right: 4px;
+}
+.st-sort-ascent:before {
+  font-family: FontAwesome;
+  content: "\f0de";
+  padding-right: 4px;
+}
+.st-sort-descent:before {
+  font-family: FontAwesome;
+  content: "\f0dd";
+  padding-right: 4px;
+}

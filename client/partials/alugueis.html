@@ -2,10 +2,11 @@
 <a ui-sref="dashboard.tabs.alugueis.novo">novo</a>
 <a ui-sref="dashboard.tabs.alugueis.lista">lista</a> -->
 <!-- <div ui-view></div> -->
-
+<button class="glyphicon glyphicon-pencil" ng-click="edit()"></button>
 
 <!-- LISTA DE CONTRATOS -->
-	<table tr-ng-grid="" items="todos" fields="['imovel', 'locador', 'locador_nomeAssinatura', 'text', 'valorTotal', 'dataDeEntrada', 'dataDeSaida']" page-items="20" ng-hide = 'isEditing'>
+<div ng-hide = 'isEditing'>
+	<table tr-ng-grid="" items="todos" fields="['imovel', 'locador', 'locador_nomeAssinatura', 'text', 'valorTotal', 'dataDeEntrada', 'dataDeSaida']" page-items="20">
 	<thead>
 	<tr>
 	</th><th field-name="imovel" display-name="Imóvel"> 
@@ -20,7 +21,7 @@
 	<tbody>
 	  <tr>
 	    <td>
-	      <button class="glyphicon glyphicon-pencil" ng-click="rowform.$show()"></button>
+	      <button class="glyphicon glyphicon-pencil" ng-click="isEditing = !isEditing"></button>
 	    </td>
 	    <td>
 	      <button class="glyphicon glyphicon-trash" ng-click="deleteTodo(gridItem._id)"></button>
@@ -33,6 +34,9 @@
 	</tbody>
 
 	</table>
+	
+	<button type="button" class="btn btn-primary btn-lg" ng-click="bla()">new
+      </button>
 </div>
 <!-- FIM LISTA DE CONTRATOS -->
 
@@ -40,7 +44,7 @@
 
 <!-- CADASTRAR NOVO ALUGUEL -->
 <div id="todo-form" class="row col-sm-8" ng-show = 'isEditing'>
-  
+  <button type="button" class="btn btn-lg" ng-click="cancelEdit()"></button>
   <form>
     <!-- radio escolha do imovel-->
     <div class="btn-group">
@@ -131,4 +135,39 @@
 
   </form>
 </div>
-<!-- FIM CADASTRAR NOVO ALUGUEL
+<!-- FIM CADASTRAR NOVO ALUGUEL -->
+
+<div st-safe-src="todos" st-table="displayedAlugueis">
+<!-- <div st-table="todos"> -->
+
+<form class="form-group">
+    <ul class="navbar-right list-unstyled">   
+        <li><input st-search="" st-delay='0' type="search" class="form-control" placeholder="Buscar..." autofocus></li>
+    </ul> 
+</form>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th st-sort='imovel'>Imóvel</th>
+    <th st-sort='text'>Hóspede</th>
+    <th st-sort='locador'>Locador</th>
+    <th st-sort='locador_nomeAssinatura'>Assinatura</th>
+    <th st-sort='valorTotal'>Valor</th>
+    <th st-sort='getters.dataDeEntrada'>Entrada</th>
+    <th st-sort='getters.dataDeSaida'>Saída</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="aluguel in displayedAlugueis">
+    <td>{{aluguel.imovel}}</td>
+    <td>{{aluguel.text}}</td>
+    <td>{{aluguel.locador}}</td>
+    <td>{{aluguel.locador_nomeAssinatura}}</td>
+    <td>{{aluguel.valorTotal}}</td>
+    <td>{{aluguel.dataDeEntrada | date: "dd/MM/yyyy" : "UTC"}}</td>
+    <td>{{aluguel.dataDeSaida | date: "dd/MM/yyyy" : "UTC"}}</td>
+  </tr>
+  </tbody>
+</table>
+</div>

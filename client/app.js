@@ -1,4 +1,4 @@
-angular.module('MyApp', ['ngResource', 'ngMessages', 'ui.router', 'ui.bootstrap', 'trNgGrid', 'todoService', 'mgcrea.ngStrap', 'satellizer',require('../server/node/node_modules/angular-input-masks')])
+angular.module('MyApp', ['ngResource', 'ngMessages', 'ui.router', 'ui.bootstrap', 'trNgGrid', 'todoService', 'mgcrea.ngStrap', 'satellizer',require('../server/node/node_modules/angular-input-masks'),'smart-table'])
   .config(function($stateProvider, $urlRouterProvider, $authProvider) {
     $stateProvider
       .state('home', {
