@@ -1,5 +1,5 @@
 angular.module('MyApp')
-	.controller('AlugueisCtrl', ['$scope','$http','Todos', function($scope, $http, Todos) {
+	.controller('AlugueisCtrl', ['$scope','$state','$http','Todos', function($scope,$state, $http, Todos) {
 		$scope.formData = {};
 		$scope.formData.imovel = "Ev64";
 		$scope.formData.locador = "TaiYang";
@@ -134,6 +134,6 @@ angular.module('MyApp')
 	    $scope.isEditing = false;
 	  };
 
-
+	  $scope.$state = $state;
 
 	}]);

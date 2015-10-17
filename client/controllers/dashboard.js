@@ -1,5 +1,5 @@
 angular.module('MyApp')
-	.controller('DashboardCtrl', ['$scope','$http','Todos', function($scope, $http, Todos) {
+	.controller('DashboardCtrl', ['$scope','$http','Todos','$rootScope','$state', function($scope, $http, Todos, $rootScope, $state) {
 		$scope.formData = {};
 		$scope.formData.imovel = "Ev64";
 		$scope.formData.locador = "TaiYang";
@@ -79,5 +79,25 @@ angular.module('MyApp')
 	    formatYear: 'yy',
 	    startingDay: 1
 	  };
+
+      $scope.tabs = [
+        { heading: "Alugueis", route:"dashboard.alugueis", active:false },
+        { heading: "Imoveis", route:"dashboard.imoveis", active:false },
+        { heading: "Hospedes", route:"dashboard.hospedes", active:false },
+		];
+ 
+    $scope.go = function(route){
+        $state.go(route);
+    };
+ 
+    $scope.active = function(route){
+        return $state.is(route);
+    };
+ 
+    $scope.$on("$stateChangeSuccess", function() {
+        $scope.tabs.forEach(function(tab) {
+            tab.active = $scope.active(tab.route);
+        });
+    });
 
 	}]);

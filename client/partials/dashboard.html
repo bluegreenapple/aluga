@@ -46,17 +46,31 @@
       
   </tab> -->  
     
-<tabset>
+<!-- <tabset>
   <tab heading="Alugueis">
     <div ui-view = 'alugueis'></div>
   </tab>
   <tab heading="Imoveis">
     <div ui-view = 'imoveis'></div>
   </tab>
-</tabset>
-    
-    
-    <!-- <div ui-view = 'hospedes'></div> -->
+</tabset> -->
+<label>dashboard level</label>
+       
+<div ng-controller='DashboardCtrl'>
+ 
+    <tabset>
+        <tab
+            ng-repeat="t in tabs"
+            heading="{{t.heading}}"
+            select="go(t.route)"
+            active="t.active">
+        </tab>
+    </tabset>
+ 
+    <h2>View:</h2>
+    <div ui-view></div>
+ 
+</div>
     
   
 </div>
