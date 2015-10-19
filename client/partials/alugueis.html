@@ -3,7 +3,7 @@
 <a ui-sref="dashboard.tabs.alugueis.novo">novo</a>
 <a ui-sref="dashboard.tabs.alugueis.lista">lista</a> -->
 <!-- <div ui-view></div> -->
-<button class="glyphicon glyphicon-pencil" ng-click="edit()"></button>
+
 
 <!-- LISTA DE CONTRATOS -->
 <div ng-hide = 'isEditing'>
@@ -180,7 +180,10 @@
 </table>
 </div>
 
+<button class="glyphicon glyphicon-pencil" ng-click="go('dashboard.alugueis.editar')"></button>
 
-<div id="rightView" ng-show="$state.includes('dashboard.alugueis.edit')">
-    <div ui-view="edit" autoscroll="false"></div>
+<div id="rightView" ng-show="$state.includes('dashboard.alugueis.editar')">
+    <div ui-view='editar' autoscroll="false"></div>
 </div> 
+
+

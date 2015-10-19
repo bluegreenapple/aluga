@@ -136,4 +136,11 @@ angular.module('MyApp')
 
 	  $scope.$state = $state;
 
+	  $scope.go = function(route){
+        $state.go(route);
+        alert('sas');
+        console.log('aoaoa');
+	};
+
+    	
 	}]);

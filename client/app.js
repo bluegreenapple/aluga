@@ -84,12 +84,16 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider) {
       controller: 'AlugueisCtrl'
     })
     
-    // // estado abstrato da aba aluguéis
-    // .state('dashboard.alugueis.lista', {
-    //   url: '/lista',
-    //   templateUrl: 'partials/alugueis.lista.html',
-    //   controller: 'AlugueisCtrl'
-    // })
+    // estado para popups e sliders laterais
+    .state('dashboard.alugueis.editar', {
+      url: '/editar',      
+      views: {
+        'editar': { // this is the unique name you can reference later
+            templateUrl: 'partials/alugueis.editar.html',
+            // controller: 'ListPageEditCtrl'
+        }
+      }
+    })
      // estado abstrato da aba imóveis
     .state('dashboard.imoveis', {
       // abstract: true,
@@ -152,7 +156,7 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider) {
       }
     });
 
-  $urlRouterProvider.otherwise('/dashboard/alugueis/lista');
+  $urlRouterProvider.otherwise('/dashboard/alugueis');
 
   $authProvider.facebook({
     clientId: '1669660303269862'
