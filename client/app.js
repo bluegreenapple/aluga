@@ -37,8 +37,9 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider) {
     })
 
     .state('dashboard', {
-      abstract: 'true',
+      // abstract: 'true',
       url: '/dashboard',
+      redirectTo: 'dashboard.alugueis',
       templateUrl: 'partials/dashboard.html',
       controller: 'DashboardCtrl',
       resolve: {
@@ -78,10 +79,15 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider) {
 
     // estado abstrato da aba aluguéis
     .state('dashboard.alugueis', {
-      // abstract: true,
       url: '/alugueis',
-      templateUrl: 'partials/alugueis.html',
-      controller: 'AlugueisCtrl'
+      sticky: true,
+      dsr: true,
+      views: {
+          'alugueis': {
+              templateUrl: 'partials/alugueis.html',
+              controller: 'AlugueisCtrl'
+          }
+      },
     })
     
     // estado para popups e sliders laterais
@@ -175,3 +181,17 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider) {
   });
   
 });
+
+
+app.run(['$rootScope', '$state', 
+ function($rootScope, $state) {
+
+  $rootScope.$on('$stateChangeStart',
+    function(evt, to, params) {
+      if (to.redirectTo) {
+        evt.preventDefault();
+        $state.go(to.redirectTo, params)
+      }
+    }
+  );
+}]);

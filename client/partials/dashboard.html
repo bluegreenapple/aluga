@@ -68,9 +68,12 @@
     </tabset>
  
     <h2>View:</h2>
-    <div ui-view></div>
- 
-</div>
+    <!-- <div ui-view></div> -->
     
+    <div ui-view="alugueis" ng-show="$state.includes('dashboard.alugueis')"></div>    
+    <div ui-view="imoveis" ng-show="$state.includes('dashboard.imoveis')"></div>    
+    <div ui-view="hospedes" ng-show="$state.includes('dashboard.hospedes')"></div>     
+</div>
+
   
 </div>

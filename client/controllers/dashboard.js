@@ -86,6 +86,8 @@ angular.module('MyApp')
         { heading: "Hospedes", route:"dashboard.hospedes", active:false },
 		];
  
+ 	$scope.$state = $state;
+ 	
     $scope.go = function(route){
         $state.go(route);
     };
