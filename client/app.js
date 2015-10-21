@@ -37,11 +37,15 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider) {
     })
 
     .state('dashboard', {
-      // abstract: 'true',
       url: '/dashboard',
-      redirectTo: 'dashboard.alugueis',
-      templateUrl: 'partials/dashboard.html',
-      controller: 'DashboardCtrl',
+      // redirectTo: 'dashboard.alugueis',
+      // dsr: true,
+      views: {
+          '': {
+              templateUrl: 'partials/dashboard.html',
+              controller: 'DashboardCtrl',
+          }
+      },
       resolve: {
         authenticated: function($q, $location, $auth) {
           var deferred = $q.defer();
@@ -81,15 +85,37 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider) {
     .state('dashboard.alugueis', {
       url: '/alugueis',
       sticky: true,
-      dsr: true,
+      deepStateRedirect: { default: "dashboard.alugueis.lista" },
       views: {
           'alugueis': {
               templateUrl: 'partials/alugueis.html',
-              controller: 'AlugueisCtrl'
+              // controller: 'AlugueisCtrl'
           }
       },
     })
     
+    // estado para lista de alugueis
+    .state('dashboard.alugueis.lista', {
+      url: '/lista',      
+      views: {
+        '': { // this is the unique name you can reference later
+            templateUrl: 'partials/alugueis.lista.html',
+            controller: 'AlugueisCtrl'
+        }
+      }
+    })
+
+    // estado para aluguel especifico
+    .state('dashboard.alugueis.aluguel', {
+      url: '/aluguel',      
+      views: {
+        '': { // this is the unique name you can reference later
+            templateUrl: 'partials/alugueis.aluguel.html',
+            // controller: 'AlugueisCtrl'
+        }
+      }
+    })
+
     // estado para popups e sliders laterais
     .state('dashboard.alugueis.editar', {
       url: '/editar',      
@@ -162,7 +188,7 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider) {
       }
     });
 
-  $urlRouterProvider.otherwise('/dashboard/alugueis');
+  $urlRouterProvider.otherwise('/');
 
   $authProvider.facebook({
     clientId: '1669660303269862'
@@ -183,15 +209,15 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider) {
 });
 
 
-app.run(['$rootScope', '$state', 
- function($rootScope, $state) {
+// app.run(['$rootScope', '$state', 
+//  function($rootScope, $state) {
 
-  $rootScope.$on('$stateChangeStart',
-    function(evt, to, params) {
-      if (to.redirectTo) {
-        evt.preventDefault();
-        $state.go(to.redirectTo, params)
-      }
-    }
-  );
-}]);
+//   $rootScope.$on('$stateChangeStart',
+//     function(evt, to, params) {
+//       if (to.redirectTo) {
+//         evt.preventDefault();
+//         $state.go(to.redirectTo, params)
+//       }
+//     }
+//   );
+// }]);
