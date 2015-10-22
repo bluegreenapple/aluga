@@ -1,4 +1,4 @@
-var app = angular.module('MyApp', ['ngResource', 'ngMessages', 'ui.router', 'ui.bootstrap', 'trNgGrid', 'todoService', 'mgcrea.ngStrap', 'satellizer',require('../server/node/node_modules/angular-input-masks'),'smart-table','ct.ui.router.extras']);
+var app = angular.module('MyApp', ['ngResource', 'ngMessages', 'ui.router', 'ui.bootstrap', 'trNgGrid', 'todoService', 'mgcrea.ngStrap', 'satellizer',require('../server/node/node_modules/angular-input-masks'),'smart-table','ct.ui.router.extras','xeditable']);
   
 app.config(function($stateProvider, $urlRouterProvider, $authProvider) {  
   $stateProvider
@@ -108,7 +108,7 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider) {
     // estado para aluguel especifico
     .state('dashboard.alugueis.aluguel', {
       url: '/aluguel/:aluguelid',
-      params: { param3: null },      
+      params: { aluguel: null },      
       views: {
         '': { // this is the unique name you can reference later
             templateUrl: 'partials/alugueis.aluguel.html',
