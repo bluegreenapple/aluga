@@ -154,6 +154,8 @@
     <th st-sort='valorTotal'>Valor</th>
     <th st-sort='getters.dataDeEntrada'>Entrada</th>
     <th st-sort='getters.dataDeSaida'>Saída</th>
+    <th></th>
+    
   </tr>
   </thead>
   <tbody>
@@ -165,6 +167,7 @@
     <td>{{aluguel.valorTotal}}</td>
     <td>{{aluguel.dataDeEntrada | date: "dd/MM/yyyy" : "UTC"}}</td>
     <td>{{aluguel.dataDeSaida | date: "dd/MM/yyyy" : "UTC"}}</td>
+    <td><a ui-sref="dashboard.alugueis.aluguel({aluguelid: aluguel._id, aluguel: aluguel})">editar</a></td>
   </tr>
   </tbody>
   <tfoot>

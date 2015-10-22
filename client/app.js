@@ -107,7 +107,8 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider) {
 
     // estado para aluguel especifico
     .state('dashboard.alugueis.aluguel', {
-      url: '/aluguel',      
+      url: '/aluguel/:aluguelid',
+      params: { param3: null },      
       views: {
         '': { // this is the unique name you can reference later
             templateUrl: 'partials/alugueis.aluguel.html',
@@ -221,3 +222,9 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider) {
 //     }
 //   );
 // }]);
+
+app.run(['$rootScope', '$state', '$stateParams',
+  function ($rootScope, $state, $stateParams) {
+    $rootScope.$state = $state;
+    $rootScope.$stateParams = $stateParams;
+}])

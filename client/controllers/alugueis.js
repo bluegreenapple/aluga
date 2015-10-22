@@ -1,5 +1,14 @@
 angular.module('MyApp')
-	.controller('AlugueisCtrl', ['$scope','$state','$http','Todos', function($scope,$state, $http, Todos) {
+	.controller('AlugueisCtrl', ['$scope','$stateParams','$state','$http','Todos', function($scope,$stateParams,$state, $http, Todos) {
+
+		// if ($stateParams.mid) {
+		// 	alert('ssss');
+		// 	console.log($stateParams.mid);
+	 //      // $scope.manager =   angular.copy(_.find(exampleData.managers, function(mgr) { return mgr.id == $stateParams.mid; }));
+	 //    } else {
+	 //      // $scope.managers =  angular.copy(exampleData.managers);
+	 //    }
+
 		$scope.formData = {};
 		$scope.formData.imovel = "Ev64";
 		$scope.formData.locador = "TaiYang";
@@ -72,75 +81,13 @@ angular.module('MyApp')
 			Todos.downloadContract(id);
 		};
 
-	  $scope.open = function($event) {
-	    $event.preventDefault();
-	    $event.stopPropagation();
-
-	    $scope.opened = true;
-	  };
-
-	  $scope.open2 = function($event) {
-	    $event.preventDefault();
-	    $event.stopPropagation();
-
-	    $scope.opened2 = true;
-	  };
-
 	  $scope.dateOptions = {
 	    formatYear: 'yy',
 	    startingDay: 1
 	  };
 
-	 //  $scope.downloadContract = function(id) {
-		// 	console.log('uauaua');
-		// 	Todos.downloadContract(id);
-		// };
-
-	  $scope.edit = function(id) {
-
-	  	alert('!!!');
-	  	console.log('sswsws');
-	    $scope.isEditing = !$scope.isEditing;
-	   //  if ($scope.formData.text != undefined) {
-	   //    $scope.loading = true;
-      
-	   //    // call the create function from our service (returns a promise object)
-	   //    Todos.update($scope.formData)
-
-	   //      // if successful creation, call our get function to get all the new analises
-	   //      .success(function(data) {
-	   //        	$scope.loading = false;
-				// $scope.formData = {}; // clear the form so our user is ready to enter another
-				// $scope.formData.imovel = "Ev64";
-				// $scope.formData.locador = "TaiYang";
-				// $scope.formData.locador_nomeAssinatura = "Rony";
-				// $scope.formData.locador_conta = "TaiYang_BB";
-				// $scope.todos = data; // assign our new list of todos
-	   //      });
-	   //  }
-	  };
-
-	  $scope.cancelEdit = function() {
-	  	$scope.loading = false;
-		$scope.formData = {}; // clear the form so our user is ready to enter another
-		$scope.formData.imovel = "Ev64";
-		$scope.formData.locador = "TaiYang";
-		$scope.formData.locador_nomeAssinatura = "Rony";
-		$scope.formData.locador_conta = "TaiYang_BB";
-	    $scope.isEditing = false;
-	  };
-
-	  $scope.confirmEdit = function() {
-	    $scope.isEditing = false;
-	  };
-
 	  $scope.$state = $state;
 
-	  $scope.go = function(route){
-        $state.go(route);
-        alert('sas');
-        console.log('aoaoa');
-	};
 
     	
 	}]);
