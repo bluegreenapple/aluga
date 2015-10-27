@@ -61,26 +61,6 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider) {
       }
     })
 
-    // .state('dashboard.tabs', {
-    //   // abstract: 'true',
-    //   url: '',
-    //   views: {
-    //       'imoveis': {
-    //           templateUrl: 'partials/imoveis.html'
-    //       },
-    //       'alugueis': {
-    //           templateUrl: 'partials/alugueis.html',
-    //           // controller: 'AlugueisCtrl'
-    //       },
-    //       'hospedes': {
-    //           templateUrl: 'partials/alugueis.html',
-    //           // controller: 'DashboardController'
-    //       }
-    //   }
-    // })
-
-  
-
     // estado abstrato da aba aluguéis
     .state('dashboard.alugueis', {
       url: '/alugueis',
@@ -106,14 +86,21 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider) {
     })
 
     // estado para aluguel especifico
-    .state('dashboard.alugueis.aluguel', {
+    .state('dashboard.alugueis.aluguel', {    
       url: '/aluguel/:aluguelid',
-      params: { aluguel: null },      
+      params: {
+        aluguel: null
+      },
       views: {
-        '': { // this is the unique name you can reference later
-            templateUrl: 'partials/alugueis.aluguel.html',
-            // controller: 'AlugueisCtrl'
+        '': { 
+          templateUrl: 'partials/alugueis.aluguel.html',
+          controller: function($scope, $stateParams) {
+             $scope.portfolioId = $stateParams.portfolioId;
+             $scope.aluguel = $stateParams.aluguel;
+             $scope.aluguelid = $stateParams.aluguelid;
+          }
         }
+            
       }
     })
 
@@ -141,6 +128,10 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider) {
       templateUrl: 'partials/hospedes.html',
       controller: 'DashboardCtrl'
     })
+
+    
+
+   
 
     // // estado criar novo da aba aluguéis
     // .state('dashboard.tabs.alugueis.lista', {
