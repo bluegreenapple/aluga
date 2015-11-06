@@ -94,13 +94,8 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider) {
       views: {
         '': { 
           templateUrl: 'partials/alugueis.aluguel.html',
-          controller: function($scope, $stateParams) {
-             $scope.portfolioId = $stateParams.portfolioId;
-             $scope.aluguel = $stateParams.aluguel;
-             $scope.aluguelid = $stateParams.aluguelid;
-          }
+          controller: 'AlugueisCtrl'
         }
-            
       }
     })
 

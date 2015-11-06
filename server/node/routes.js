@@ -78,6 +78,36 @@ module.exports = function(app) {
 
 	});
 
+	//update a todo
+	app.put('/api/todos/', function(req, res) {
+
+		// use our todo model to find the todo we want
+        Todo.findById(req.body._id, function(err, todo) {
+        	
+            if (err)
+                res.send(err);
+
+            todo.text = req.body.text;
+			todo.imovel= req.body.imovel;
+			todo.locador= req.body.locador;
+			todo.locador_conta= req.body.locador_conta;
+			todo.locador_nomeAssinatura= req.body.locador_nomeAssinatura;
+			todo.dataDeEntrada= req.body.dataDeEntrada;
+			todo.dataDeSaida= req.body.dataDeSaida;
+			todo.valorTotal= req.body.valorTotal;
+
+            // save the todo
+            todo.save(function(err) {
+                if (err)
+                    res.send(err);
+
+                getTodos(res);
+            });
+
+        });
+
+	});
+
 	// delete a todo
 	app.delete('/api/todos/:todo_id', function(req, res) {
 		Todo.remove({

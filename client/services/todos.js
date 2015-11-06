@@ -10,6 +10,9 @@ angular.module('todoService', [])
 			create : function(todoData) {
 				return $http.post('/api/todos', todoData);
 			},
+			update : function(todoData) {
+				return $http.put('/api/todos/',todoData);
+			},
 			delete : function(id) {
 				return $http.delete('/api/todos/' + id);
 			},
@@ -20,5 +23,6 @@ angular.module('todoService', [])
 				console.log('ieieiei');
 				return $http.get('/api/download');
 			},
+
 		}
 	}]);

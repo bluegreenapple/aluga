@@ -8,6 +8,41 @@ angular.module('MyApp')
 	 //    } else {
 	 //      // $scope.managers =  angular.copy(exampleData.managers);
 	 //    }
+	$scope.aluguel = $stateParams.aluguel;
+	$scope.aluguelid = $stateParams.aluguelid;
+	// $scope.saveUser = function() {
+	//   // $scope.user already updated!
+	//   return $http.post('/saveUser', $scope.user).error(function(err) {
+	//     if(err.field && err.msg) {
+	//       // err like {field: "name", msg: "Server-side error for this username!"} 
+	//       $scope.editableForm.$setError(err.field, err.msg);
+	//     } else { 
+	//       // unknown error
+	//       $scope.editableForm.$setError('name', 'Unknown error!');
+	//     }
+	//   });
+	// };
+
+	$scope.update = function() {
+	    // alert('I update');
+	    // validate the formData to make sure that something is there
+	    // if form is empty, nothing will happen
+	    // if ($scope.formData.nSerieDoEquipamento != undefined) {
+	    //   $scope.loading = true;
+	      
+	      // call the create function from our service (returns a promise object)
+	      Todos.update($scope.aluguel)
+
+	        // if successful creation, call our get function to get all the new analises
+	        .success(function(data) {
+	          // $scope.loading = false;
+	          // $scope.formData = {}; // clear the form so our user is ready to enter another
+	          // $scope.analises = data; // assign our new list of analises
+	          // $modalInstance.close($scope.analises);
+	        });
+	    // }
+	  };
+
 
 		$scope.formData = {};
 		$scope.formData.imovel = "Ev64";

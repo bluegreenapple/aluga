@@ -3,9 +3,67 @@
 
 <h5>params</h5>
 <pre>{{$stateParams | json}}</pre>
-<h5>state</h5>
-<pre>{{$state.current | json}}</pre>
+<!-- <h5>state</h5>
+<pre>{{$state.current | json}}</pre> -->
 
 <h5>aluguel</h5>
 <pre>{{aluguel | json}}</pre>
 <pre>{{aluguelid}}</pre>
+
+<form editable-form name="editableForm" onaftersave="update()">
+    <div>
+      <!-- editable username (text with validation) -->
+      <span class="title">Nome:</span>
+      <span editable-text="aluguel.text" e-name="text" onbeforesave="checkName($data)" e-required>{{ aluguel.text || 'empty' }}</span>
+    </div> 
+
+    <div>
+      <!-- editable username (text with validation) -->
+      <span class="title">imovel:</span>
+      <span editable-text="aluguel.imovel" e-name="imovel" onbeforesave="checkName($data)" e-required>{{ aluguel.imovel || 'empty' }}</span>
+    </div> 
+
+    <div>
+      <span class="title">assinatura:</span>
+      <span editable-text="aluguel.locador_nomeAssinatura" e-name="locador_nomeAssinatura" onbeforesave="checkName($data)" e-required>{{ aluguel.locador_nomeAssinatura || 'empty' }}</span>
+    </div> 
+
+    <div>
+      <!-- editable username (text with validation) -->
+      <span class="title">conta:</span>
+      <span editable-text="aluguel.locador_conta" e-name="locador_conta" onbeforesave="checkName($data)" e-required>{{ aluguel.locador_conta || 'empty' }}</span>
+    </div> 
+
+     <div>
+      <!-- editable username (text with validation) -->
+      <span class="title">valor total:</span>
+      <span editable-text="aluguel.valorTotal" e-name="valorTotal" onbeforesave="checkName($data)" e-required>{{ aluguel.valorTotal || 'empty' }}</span>
+    </div> 
+
+    <!-- 
+
+    imovel: { type: String, default: ''},
+  locador: { type: String, default: ''},
+  locador_nomeAssinatura: { type: String, default: ''},
+  locador_conta: { type: String, default: ''},
+  valorTotal: { type: String, default:''},
+  dataDeEntrada: { type: Date, default: Date.now },
+  dataDeSaida: { type: Date, default: Date.now },
+ -->
+
+    <div class="buttons">
+      <!-- button to show form -->
+      <button type="button" class="btn btn-default" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
+        Edit
+      </button>
+      <!-- buttons to submit / cancel form -->
+      <span ng-show="editableForm.$visible">
+        <button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting">
+          Save
+        </button>
+        <button type="button" class="btn btn-default" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
+          Cancel
+        </button>
+      </span>
+    </div>
+  </form>  
