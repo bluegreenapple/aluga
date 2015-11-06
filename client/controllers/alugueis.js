@@ -1,6 +1,20 @@
 angular.module('MyApp')
 	.controller('AlugueisCtrl', ['$scope','$stateParams','$state','$http','Todos', function($scope,$stateParams,$state, $http, Todos) {
 
+	if ($stateParams.aluguelid) 
+	{
+		if (!$stateParams.aluguel) 
+		{
+			Todos.getId($stateParams.aluguelid)
+				.success(function(data) {
+					$stateParams.aluguel = data;
+					$scope.aluguel = data;
+				});
+		}
+	}
+	$scope.aluguel = $stateParams.aluguel;
+	$scope.aluguelid = $stateParams.aluguelid;
+
 		// if ($stateParams.mid) {
 		// 	alert('ssss');
 		// 	console.log($stateParams.mid);
