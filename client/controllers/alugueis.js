@@ -9,21 +9,20 @@ angular.module('MyApp')
 				.success(function(data) {
 					$stateParams.aluguel = data;
 					$scope.aluguel = data;
+					$scope.aluguel.dataDeEntrada = new Date($scope.aluguel.dataDeEntrada);
+					$scope.aluguel.dataDeSaida = new Date($scope.aluguel.dataDeSaida);
 				});
 		}
 	}
 	$scope.aluguel = $stateParams.aluguel;
 	$scope.aluguelid = $stateParams.aluguelid;
+	if ($scope.aluguel) 
+	{
+		$scope.aluguel.dataDeEntrada = new Date($scope.aluguel.dataDeEntrada);
+		$scope.aluguel.dataDeSaida = new Date($scope.aluguel.dataDeSaida);
+	};
+	
 
-		// if ($stateParams.mid) {
-		// 	alert('ssss');
-		// 	console.log($stateParams.mid);
-	 //      // $scope.manager =   angular.copy(_.find(exampleData.managers, function(mgr) { return mgr.id == $stateParams.mid; }));
-	 //    } else {
-	 //      // $scope.managers =  angular.copy(exampleData.managers);
-	 //    }
-	$scope.aluguel = $stateParams.aluguel;
-	$scope.aluguelid = $stateParams.aluguelid;
 	// $scope.saveUser = function() {
 	//   // $scope.user already updated!
 	//   return $http.post('/saveUser', $scope.user).error(function(err) {
