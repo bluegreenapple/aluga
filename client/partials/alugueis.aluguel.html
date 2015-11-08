@@ -43,13 +43,13 @@
     <div>
       <!-- editable username (text with validation) -->
       <span class="title">dataDeEntrada:</span>
-      <span editable-date="aluguel.dataDeEntrada"  e-name="dataDeEntrada" ng-model-options="{ timezone: 'UTC' }" onbeforesave="checkName($data)" e-required> {{ aluguel.dataDeEntrada || 'empty' | date:'dd/MM/yyyy' : "UTC"}}</span>
+      <span editable-date="aluguel.dataDeEntrada"  e-name="dataDeEntrada" e-ng-model-options="{ timezone: 'UTC' }" onbeforesave="checkName($data)" e-required> {{ aluguel.dataDeEntrada || 'empty' | date:'dd/MM/yyyy' : "UTC"}}</span>
     </div> 
 
     <div>
       <!-- editable username (text with validation) -->
       <span class="title">dataDeSaida:</span>
-      <span editable-date="aluguel.dataDeSaida"  e-name="dataDeSaida" ng-model-options="{ timezone: 'UTC' }" onbeforesave="checkName($data)" e-required> {{ aluguel.dataDeSaida || 'empty' | date:'dd/MM/yyyy' : "UTC"}}</span>
+      <span editable-date="aluguel.dataDeSaida"  e-name="dataDeSaida" e-ng-model-options="{ timezone: 'UTC' }" onbeforesave="checkName($data)" e-required> {{ aluguel.dataDeSaida || 'empty' | date:'dd/MM/yyyy' : "UTC"}}</span>
     </div> 
 
     <!-- 
