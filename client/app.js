@@ -1,4 +1,4 @@
-var app = angular.module('MyApp', ['ngResource', 'ngMessages', 'ui.router', 'ui.bootstrap', 'trNgGrid', 'todoService', 'mgcrea.ngStrap', 'satellizer',require('../server/node/node_modules/angular-input-masks'),'smart-table','ct.ui.router.extras','xeditable']);
+var app = angular.module('MyApp', ['ngResource', 'ngMessages', 'ui.router', 'ui.bootstrap', 'trNgGrid', 'todoService', 'imovelService', 'mgcrea.ngStrap', 'satellizer',require('../server/node/node_modules/angular-input-masks'),'smart-table','ct.ui.router.extras','xeditable']);
   
 app.config(function($stateProvider, $urlRouterProvider, $authProvider) {  
   $stateProvider
@@ -121,12 +121,36 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider) {
       }
     })
      // estado abstrato da aba imóveis
+    // .state('dashboard.imoveis', {
+    //   // abstract: true,
+    //   url: '/imoveis',
+    //   templateUrl: 'partials/imoveis.html',
+    //   controller: 'DashboardCtrl'
+    // })
+    // estado abstrato da aba imóveis
     .state('dashboard.imoveis', {
-      // abstract: true,
       url: '/imoveis',
-      templateUrl: 'partials/imoveis.html',
-      controller: 'DashboardCtrl'
+      sticky: true,
+      deepStateRedirect: { default: "dashboard.imoveis.novo" },
+      views: {
+          'imoveis': {
+              templateUrl: 'partials/imoveis.html',
+              // controller: 'AlugueisCtrl'
+          }
+      },
     })
+
+    // estado para imóvel novo
+    .state('dashboard.imoveis.novo', {    
+      url: '/novo',
+      views: {
+        '': { 
+          templateUrl: 'partials/imoveis.novo.html',
+          controller: 'ImoveisCtrl'
+        }
+      }
+    })
+
      // estado abstrato da aba imóveis
     .state('dashboard.hospedes', {
       // abstract: true,

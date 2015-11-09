@@ -5,6 +5,7 @@ module.exports = mongoose.model('Imovel', {
 	nome: { type: String, default: ''},//edificio flores
 	cep: { type: String, default: ''},
 	logradouro: { type: String, default: ''},
+	numero: { type: String, default: ''},
 	complemento: { type: String, default: ''},// apto. 68
 	bairro: { type: String, default: ''},
 	localidade: { type: String, default:''},//Sao Paulo

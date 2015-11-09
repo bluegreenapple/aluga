@@ -1,0 +1,85 @@
+<h1>imoveis.novo level</h1>
+<!-- <a ui-sref="dashboard.alugueis.lista">Voltar para Lista</a> -->
+
+
+<!-- FORM TO CREATE TODOS -->
+<h2>Novo Imovel:</h2>
+<div id="todo-form" class="row">
+	<div class="col-sm-8 col-sm-offset-2 text-center">
+		<form>
+
+			<div class="form-group">
+
+				<div class="col-md-6">
+					<label>Tipo</label>
+					<input type="text" class="form-control input-lg " ng-model="formData.tipo" required autofocus></input>
+				</div>
+
+				<div class="col-md-6">
+					<label>Cep</label>
+					<input type="text" class="form-control input-lg " ng-model="formData.cep" required autofocus></input>
+				</div>
+
+				<div class="col-md-6">
+					<label>Logradouro</label>
+					<input type="text" class="form-control input-lg " ng-model="formData.logradouro" required autofocus></input>
+				</div>
+
+				<div class="col-md-6">
+					<label>Numero</label>
+					<input type="text" class="form-control input-lg " ng-model="formData.numero" required autofocus></input>
+				</div>
+
+				<div class="col-md-6">
+					<label>Complemento</label>
+					<input type="text" class="form-control input-lg " ng-model="formData.complemento" required autofocus></input>
+				</div>
+
+				<div class="col-md-6">
+					<label>Bairro</label>
+					<input type="text" class="form-control input-lg " ng-model="formData.bairro" required autofocus></input>
+				</div>
+
+				<div class="col-md-6">
+					<label>Cidade</label>
+					<input type="text" class="form-control input-lg " ng-model="formData.localidade" required autofocus></input>
+				</div>
+
+				<div class="col-md-6">
+					<label>UF</label>
+					<input type="text" class="form-control input-lg " ng-model="formData.uf" required autofocus></input>
+				</div>
+
+				<div class="col-md-6">
+					<label>Nome</label>
+					<input type="text" class="form-control input-lg " ng-model="formData.nome" required autofocus></input>
+				</div>
+
+				<div class="col-md-6">
+					<label>Valor da Faxina</label>
+					<input type="text" class="form-control input-lg " ng-model="formData.valorFaxina" ui-money-mask="2" required></input>
+				</div>
+
+				<div class="col-md-6">
+					<label>N Vagas</label>
+					<input type="text" class="form-control input-lg " ng-model="formData.nVagas" required></input>
+				</div>
+
+				<div class="col-md-6">
+					<label>N Pessoas</label>
+					<input type="text" class="form-control input-lg " ng-model="formData.nPessoas" required></input>
+				</div>
+
+				<div class="col-md-6">
+					<label>Zelador</label>
+					<input type="text" class="form-control input-lg " ng-model="formData.zelador" required autofocus></input>
+				</div>
+
+			</div>	
+			
+
+			<!-- createToDo() WILL CREATE NEW TODOS -->
+			<button type="submit" class="btn btn-primary btn-lg" ng-click="createImovel()">Add</button>
+		</form>
+	</div>
+</div>

@@ -168,6 +168,7 @@ module.exports = function(app) {
 		    nome : req.body.nome,
 			cep: req.body.cep,
 			logradouro: req.body.logradouro,
+			numero: req.body.numero,
 			complemento: req.body.complemento,
 			bairro: req.body.bairro,
 			localidade: req.body.localidade,
@@ -202,6 +203,7 @@ module.exports = function(app) {
 		    imovel.nome = req.body.nome;
 			imovel.cep= req.body.cep;
 			imovel.logradouro= req.body.logradouro;
+			imovel.numero= req.body.numero;
 			imovel.complemento= req.body.complemento;
 			imovel.bairro= req.body.bairro;
 			imovel.localidade= req.body.localidade;

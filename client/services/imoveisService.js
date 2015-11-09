@@ -1,4 +1,4 @@
-angular.module('imoveisService', [])
+angular.module('imovelService', [])
 
 	// super simple service
 	// each function returns a promise object 
