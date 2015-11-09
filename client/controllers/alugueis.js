@@ -31,7 +31,7 @@ angular.module('MyApp')
 		});
 	};
 
-	
+
 	$scope.showImoveis = function() 
 	{
 	    if($scope.imoveis.length) 
@@ -44,6 +44,13 @@ angular.module('MyApp')
 	      return $scope.user.groupName;
 	    }
   	};
+
+  	$scope.imoveis = [
+	    {value: 'Ev64', nome: 'Ev64'},
+	    {value: 'Ev75', nome: 'Ev75'},
+	    {value: 'Casagrande', nome: 'Casagrande'},
+	    {value: 'Acqua', nome: 'Acqua'}
+	  ]; 
 
 	// $scope.saveUser = function() {
 	//   // $scope.user already updated!

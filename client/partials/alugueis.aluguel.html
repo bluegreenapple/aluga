@@ -17,11 +17,30 @@
       <span editable-text="aluguel.text" e-name="text" onbeforesave="checkName($data)" e-required>{{ aluguel.text || 'empty' }}</span>
     </div> 
 
-    <div>
-      <!-- editable username (text with validation) -->
+    <!-- <div>
       <span class="title">imovel:</span>
       <span editable-text="aluguel.imovel" e-name="imovel" onbeforesave="checkName($data)" e-required>{{ aluguel.imovel || 'empty' }}</span>
-    </div> 
+    </div>  -->
+    <!--  <div>
+      <span class="title">Imóveis: </span>
+      <span editable-select="aluguel.imovel" e-name="imovel" onshow="loadImoveis()" e-ng-options="imovel.id as imovel.nome for imovel in imoveis">
+        {{ showImoveis() }}
+      </span>
+    </div> -->
+    
+    <!-- <div>
+      <span class="title">Status: </span>
+      <span editable-select="aluguel.imovel" e-name="imovel" e-ng-options="imovel.id as imovel.nome for imovel in imoveis">
+        {{ (imoveis || 'Not set' }}
+      </span>
+    </div>  -->
+    <div>
+      <!-- editable status (select-local) -->
+      <span class="title">Status: </span>
+      <span editable-select="aluguel.imovel" e-name="imovel" e-ng-options="s.value as s.nome for s in imoveis">
+        {{ aluguel.imovel || 'empty' }}
+      </span>
+    </div>  
 
     <div>
       <span class="title">assinatura:</span>
@@ -52,16 +71,9 @@
       <span editable-date="aluguel.dataDeSaida"  e-name="dataDeSaida" e-ng-model-options="{ timezone: 'UTC' }" onbeforesave="checkName($data)" e-required> {{ aluguel.dataDeSaida || 'empty' | date:'dd/MM/yyyy' : "UTC"}}</span>
     </div> 
 
-    <!-- 
+   
 
-    imovel: { type: String, default: ''},
-  locador: { type: String, default: ''},
-  locador_nomeAssinatura: { type: String, default: ''},
-  locador_conta: { type: String, default: ''},
-  valorTotal: { type: String, default:''},
-  dataDeEntrada: { type: Date, default: Date.now },
-  dataDeSaida: { type: Date, default: Date.now },
- -->
+
 
     <div class="buttons">
       <!-- button to show form -->
