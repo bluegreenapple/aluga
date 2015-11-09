@@ -73,6 +73,13 @@ angular.module('MyApp')
 	    {value: 'Paulo', nome: 'Paulo'},
 	  ];
 
+	  $scope.locadores = [
+	    {value: 'Tjin', nome: 'Tjin'},
+	    {value: 'TaiYang', nome: 'TaiYang'},
+	    {value: 'Paulo', nome: 'Paulo'},
+	    {value: 'Lam', nome: 'Lam'},
+	  ];
+
 	// $scope.saveUser = function() {
 	//   // $scope.user already updated!
 	//   return $http.post('/saveUser', $scope.user).error(function(err) {

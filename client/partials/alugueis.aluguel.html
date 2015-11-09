@@ -41,7 +41,12 @@
       </span>
     </div>  
 
-    
+    <div>
+      <span class="title">Locador: </span>
+      <span editable-select="aluguel.locador" e-name="locador" e-ng-options="s.value as s.nome for s in locadores">
+        {{ aluguel.locador || 'empty' }}
+      </span>
+    </div>  
 
     <!-- <div>
       <span class="title">assinatura:</span>
