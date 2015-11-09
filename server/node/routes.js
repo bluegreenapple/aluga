@@ -124,4 +124,118 @@ module.exports = function(app) {
 	// app.get('*', function(req, res) {
 	// 	res.sendFile('../../client/index.html'); // load the single view file (angular will handle the page changes on the front-end)
 	// });
+
+	//IMOVEIS api ---------------------------------------------------------------------
+	app.get('/api/download/:imovel_id', function(req, res) {
+
+		// use mongoose to get one specific imovel in the database
+		Imovel.findOne({_id : req.params.imovel_id}, function(err, imovel) {
+			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
+			if (err)
+				res.send(err)
+
+			console.log('download on server!');
+			word.generateDocx('./ev.docx',imovel);
+			var file = 'output.docx';
+			// res.download(file,imovel.text); // Set disposition and send it.			
+		  	res.download(file,imovel.text+'.docx'); // Set disposition and send it.			
+		});
+	});
+
+	// get all imoveis
+	app.get('/api/imoveis', function(req, res) {
+
+		// use mongoose to get all imoveis in the database
+		getImoveis(res);
+	});
+
+	// get an specific imovel
+	app.get('/api/imoveis/:imovel_id', function(req, res) {
+
+		// use mongoose to get one specific imovel in the database
+		Imovel.findOne({_id : req.params.imovel_id}, function(err, imovel) {
+
+			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
+			if (err)
+				res.send(err)
+
+			res.json(imovel); // return the imovel in JSON format
+		});
+	});
+
+	// create imovel and send back all imoveis after creation
+	app.post('/api/imoveis', function(req, res) {
+
+		// create a imovel, information comes from AJAX request from Angular
+		Imovel.create({
+			tipo : req.body.tipo,
+			cep: req.body.cep,
+			logradouro: req.body.logradouro,
+			complemento: req.body.complemento,
+			bairro: req.body.bairro,
+			localidade: req.body.localidade,
+			nPessoas: req.body.nPessoas,
+			nVagas: req.body.nVagas,
+			valorFaxina: req.body.valorFaxina,
+			zelador: req.body.zelador,
+			createdAt: req.body.createdAt,
+			updatedAt: req.body.updatedAt,
+			// horarioDeEntrada: req.body.horarioDeEntrada,
+			// horarioDeSaida: req.body.horarioDeSaida,
+			done : false
+		}, function(err, imovel) {
+			if (err)
+				res.send(err);
+
+			// get and return all the imoveis after you create another
+			getImoveis(res);
+		});
+
+	});
+
+	//update a imovel
+	app.put('/api/imoveis/', function(req, res) {
+
+		// use our imovel model to find the imovel we want
+        Imovel.findById(req.body._id, function(err, imovel) {
+        	
+            if (err)
+                res.send(err);
+
+            tipo : req.body.tipo,
+			cep: req.body.cep,
+			logradouro: req.body.logradouro,
+			complemento: req.body.complemento,
+			bairro: req.body.bairro,
+			localidade: req.body.localidade,
+			nPessoas: req.body.nPessoas,
+			nVagas: req.body.nVagas,
+			valorFaxina: req.body.valorFaxina,
+			zelador: req.body.zelador,
+			createdAt: req.body.createdAt,
+			updatedAt: req.body.updatedAt,
+
+            // save the imovel
+            imovel.save(function(err) {
+                if (err)
+                    res.send(err);
+
+                getImoveis(res);
+            });
+
+        });
+
+	});
+
+	// delete a imovel
+	app.delete('/api/imoveis/:imovel_id', function(req, res) {
+		Imovel.remove({
+			_id : req.params.imovel_id
+		}, function(err, imovel) {
+			if (err)
+				res.send(err);
+
+			getImoveis(res);
+		});
+	});
 };

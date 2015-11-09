@@ -23,6 +23,28 @@ angular.module('MyApp')
 	};
 	
 
+	//imoveis
+	$scope.groups = [];
+	$scope.loadGroups = function() {
+		return $scope.groups.length ? null : $http.get('/groups').success(function(data) {
+			$scope.groups = data;
+		});
+	};
+
+	
+	$scope.showImoveis = function() 
+	{
+	    if($scope.imoveis.length) 
+	    {
+	      var selected = $filter('filter')($scope.imoveis, {id: $scope.user.group});
+	      return selected.length ? selected[0].text : 'Not set';
+	    } 
+	    else 
+	    {
+	      return $scope.user.groupName;
+	    }
+  	};
+
 	// $scope.saveUser = function() {
 	//   // $scope.user already updated!
 	//   return $http.post('/saveUser', $scope.user).error(function(err) {
