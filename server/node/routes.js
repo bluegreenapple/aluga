@@ -1,4 +1,5 @@
 var Todo = require('./models/todo');
+var Imovel = require('./models/imovel');
 var word = require('./services/wordServiceServer.js');
 
 function getTodos(res){
@@ -9,6 +10,17 @@ function getTodos(res){
 				res.send(err)
 
 			res.json(todos); // return all todos in JSON format
+		});
+};
+
+function getImoveis(res){
+	Imovel.find(function(err, imoveis) {
+
+			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
+			if (err)
+				res.send(err)
+			console.log('a: ',imoveis);
+			res.json(imoveis); // return all imoveis in JSON format
 		});
 };
 
@@ -126,22 +138,6 @@ module.exports = function(app) {
 	// });
 
 	//IMOVEIS api ---------------------------------------------------------------------
-	app.get('/api/download/:imovel_id', function(req, res) {
-
-		// use mongoose to get one specific imovel in the database
-		Imovel.findOne({_id : req.params.imovel_id}, function(err, imovel) {
-			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
-			if (err)
-				res.send(err)
-
-			console.log('download on server!');
-			word.generateDocx('./ev.docx',imovel);
-			var file = 'output.docx';
-			// res.download(file,imovel.text); // Set disposition and send it.			
-		  	res.download(file,imovel.text+'.docx'); // Set disposition and send it.			
-		});
-	});
-
 	// get all imoveis
 	app.get('/api/imoveis', function(req, res) {
 
@@ -168,7 +164,8 @@ module.exports = function(app) {
 
 		// create a imovel, information comes from AJAX request from Angular
 		Imovel.create({
-			tipo : req.body.tipo,
+		    tipo : req.body.tipo,
+		    nome : req.body.nome,
 			cep: req.body.cep,
 			logradouro: req.body.logradouro,
 			complemento: req.body.complemento,
@@ -180,8 +177,7 @@ module.exports = function(app) {
 			zelador: req.body.zelador,
 			createdAt: req.body.createdAt,
 			updatedAt: req.body.updatedAt,
-			// horarioDeEntrada: req.body.horarioDeEntrada,
-			// horarioDeSaida: req.body.horarioDeSaida,
+			
 			done : false
 		}, function(err, imovel) {
 			if (err)
@@ -202,18 +198,19 @@ module.exports = function(app) {
             if (err)
                 res.send(err);
 
-            tipo : req.body.tipo,
-			cep: req.body.cep,
-			logradouro: req.body.logradouro,
-			complemento: req.body.complemento,
-			bairro: req.body.bairro,
-			localidade: req.body.localidade,
-			nPessoas: req.body.nPessoas,
-			nVagas: req.body.nVagas,
-			valorFaxina: req.body.valorFaxina,
-			zelador: req.body.zelador,
-			createdAt: req.body.createdAt,
-			updatedAt: req.body.updatedAt,
+            imovel.tipo = req.body.tipo;
+		    imovel.nome = req.body.nome;
+			imovel.cep= req.body.cep;
+			imovel.logradouro= req.body.logradouro;
+			imovel.complemento= req.body.complemento;
+			imovel.bairro= req.body.bairro;
+			imovel.localidade= req.body.localidade;
+			imovel.nPessoas= req.body.nPessoas;
+			imovel.nVagas= req.body.nVagas;
+			imovel.valorFaxina= req.body.valorFaxina;
+			imovel.zelador= req.body.zelador;
+			imovel.createdAt= req.body.createdAt;
+			imovel.updatedAt= req.body.updatedAt;
 
             // save the imovel
             imovel.save(function(err) {
