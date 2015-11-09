@@ -49,8 +49,29 @@ angular.module('MyApp')
 	    {value: 'Ev64', nome: 'Ev64'},
 	    {value: 'Ev75', nome: 'Ev75'},
 	    {value: 'Casagrande', nome: 'Casagrande'},
-	    {value: 'Acqua', nome: 'Acqua'}
+	    {value: 'Acqua', nome: 'Acqua'},
+	    {value: 'CapMartin', nome: 'CapMartin'},
+	    {value: 'RioVerde', nome: 'RioVerde'},
+	    {value: 'PortoBelo', nome: 'PortoBelo'},
+	    {value: 'Laguna', nome: 'Laguna'},
 	  ]; 
+
+	 $scope.contas = [
+	    {value: 'TaiYang_BB', nome: 'TaiYang_BB'},
+	    {value: 'Rony_Bradesco', nome: 'Rony_Bradesco'},
+	    {value: 'Tjin_Santander', nome: 'Tjin_Santander'},
+	    {value: 'Tjin_Hsbc', nome: 'Tjin_Hsbc'},
+	    {value: 'Lam_Bradesco', nome: 'Lam_Bradesco'},
+	    {value: 'Paulo_Itau', nome: 'Paulo_Itau'},
+	  ]; 
+
+	  $scope.assinaturas = [
+	    {value: 'Rony', nome: 'Rony'},
+	    {value: 'Milly', nome: 'Milly'},
+	    {value: 'Tjin', nome: 'Tjin'},
+	    {value: 'TaiYang', nome: 'TaiYang'},
+	    {value: 'Paulo', nome: 'Paulo'},
+	  ];
 
 	// $scope.saveUser = function() {
 	//   // $scope.user already updated!

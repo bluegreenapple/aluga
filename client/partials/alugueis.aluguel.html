@@ -35,23 +35,36 @@
       </span>
     </div>  -->
     <div>
-      <!-- editable status (select-local) -->
-      <span class="title">Status: </span>
+      <span class="title">Imovel: </span>
       <span editable-select="aluguel.imovel" e-name="imovel" e-ng-options="s.value as s.nome for s in imoveis">
         {{ aluguel.imovel || 'empty' }}
       </span>
     </div>  
 
-    <div>
+    
+
+    <!-- <div>
       <span class="title">assinatura:</span>
       <span editable-text="aluguel.locador_nomeAssinatura" e-name="locador_nomeAssinatura" onbeforesave="checkName($data)" e-required>{{ aluguel.locador_nomeAssinatura || 'empty' }}</span>
-    </div> 
-
+    </div>  -->
     <div>
-      <!-- editable username (text with validation) -->
+      <span class="title">Assinatura: </span>
+      <span editable-select="aluguel.locador_nomeAssinatura" e-name="conta" e-ng-options="s.value as s.nome for s in assinaturas">
+        {{ aluguel.locador_nomeAssinatura || 'empty' }}
+      </span>
+    </div>  
+
+
+    <!-- <div>
       <span class="title">conta:</span>
       <span editable-text="aluguel.locador_conta" e-name="locador_conta" onbeforesave="checkName($data)" e-required>{{ aluguel.locador_conta || 'empty' }}</span>
-    </div> 
+    </div>  -->
+    <div>
+      <span class="title">Conta: </span>
+      <span editable-select="aluguel.locador_conta" e-name="conta" e-ng-options="s.value as s.nome for s in contas">
+        {{ aluguel.locador_conta || 'empty' }}
+      </span>
+    </div>  
 
      <div>
       <!-- editable username (text with validation) -->
