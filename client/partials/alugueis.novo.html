@@ -1,2 +1,107 @@
-<h1>cadastro</h1>
-<a ui-sref="dashboard.tabs.alugueis.lista">lista</a>
+<h1>alugueis.novo level</h1>
+<a ui-sref="dashboard.alugueis.lista">Voltar para Lista</a>
+
+
+<!-- FORM TO CREATE TODOS -->
+<h2>Novo Contrato:</h2>
+<div id="todo-form" class="row">
+	<div class="col-sm-8 col-sm-offset-2 text-center">
+		<form>
+			<!-- radio escolha do imovel-->
+			<div class="btn-group">
+		        <label class="btn btn-primary" ng-model="formData.imovel" btn-radio="'Ev64'">Ev64</label>
+		        <label class="btn btn-primary" ng-model="formData.imovel" btn-radio="'Ev75'">Ev75</label>
+		        <label class="btn btn-primary" ng-model="formData.imovel" btn-radio="'Acqua'">Acqua</label>
+		        <label class="btn btn-primary" ng-model="formData.imovel" btn-radio="'Casagrande'">Casagrande</label>
+		        <label class="btn btn-primary" ng-model="formData.imovel" btn-radio="'CasaPaulo'">CasaPaulo</label>
+		        <label class="btn btn-primary" ng-model="formData.imovel" btn-radio="'CapMartin'">Cap Martin</label>
+		        <label class="btn btn-primary" ng-model="formData.imovel" btn-radio="'RioVerde'">RioVerde</label>
+		        <label class="btn btn-primary" ng-model="formData.imovel" btn-radio="'PortoBelo'">PortoBelo</label>
+		        <label class="btn btn-primary" ng-model="formData.imovel" btn-radio="'Laguna'">Laguna</label>
+		        <h4>Imovel Escolhido</h4>
+		         <pre>{{formData.imovel}}</pre>
+		    </div>
+		    <!-- FIM radio escolha do imovel-->
+
+		    <!-- radio escolha do locador-->
+			<div class="btn-group">
+		        <label class="btn btn-primary" ng-model="formData.locador" btn-radio="'TaiYang'">TaiYang</label>
+		        <label class="btn btn-primary" ng-model="formData.locador" btn-radio="'Tjin'">Tjin</label>
+		        <label class="btn btn-primary" ng-model="formData.locador" btn-radio="'Rony'">Rony</label>
+		        <label class="btn btn-primary" ng-model="formData.locador" btn-radio="'Paulo'">Paulo</label>
+		        <label class="btn btn-primary" ng-model="formData.locador" btn-radio="'Lam'">Lam</label>
+		        <h4>Locador</h4>
+		         <pre>{{formData.locador}}</pre>
+		    </div>
+		    <!-- FIM radio escolha do locador_nomeAssinatura-->
+
+			<!-- radio escolha do locador_nomeAssinatura-->
+			<div class="btn-group">
+		        <label class="btn btn-primary" ng-model="formData.locador_nomeAssinatura" btn-radio="'Rony'">Rony</label>
+		        <label class="btn btn-primary" ng-model="formData.locador_nomeAssinatura" btn-radio="'Tjin'">Tjin</label>
+		        <label class="btn btn-primary" ng-model="formData.locador_nomeAssinatura" btn-radio="'Kion'">Kion</label>
+		        <label class="btn btn-primary" ng-model="formData.locador_nomeAssinatura" btn-radio="'Milly'">Milly</label>
+		        <h4>Assinatura</h4>
+		         <pre>{{formData.locador_nomeAssinatura}}</pre>
+		    </div>
+		    <!-- FIM radio escolha do locador_nomeAssinatura-->
+
+		    <!-- radio escolha do locador_conta-->
+			<div class="btn-group">
+		        <label class="btn btn-primary" ng-model="formData.locador_conta" btn-radio="'TaiYang_BB'">TaiYang_BB</label>
+		        <label class="btn btn-primary" ng-model="formData.locador_conta" btn-radio="'Rony_Bradesco'">Rony_Bradesco</label>
+		        <label class="btn btn-primary" ng-model="formData.locador_conta" btn-radio="'Tjin_Santander'">Tjin_Santander</label>
+		        <label class="btn btn-primary" ng-model="formData.locador_conta" btn-radio="'Tjin_Hsbc'">Tjin_Hsbc</label>
+		        <label class="btn btn-primary" ng-model="formData.locador_conta" btn-radio="'Lam_Bradesco'">Lam_Bradesco</label>
+		        <label class="btn btn-primary" ng-model="formData.locador_conta" btn-radio="'Paulo_Itau'">Paulo_Itau</label>
+		        <h4>Conta</h4>
+		         <pre>{{formData.locador_conta}}</pre>
+		    </div>
+		    <!-- FIM radio escolha do locador_conta-->
+
+
+
+
+			<div class="form-group">
+
+
+
+			<div class="col-md-6">
+				<label>Nome</label>
+				<input type="text" class="form-control input-lg " ng-model="formData.text" required autofocus></input>
+			</div>
+
+				<div class="col-md-6">
+					<label>Valor Total</label>
+					<input type="text" class="form-control input-lg " ng-model="formData.valorTotal" ui-money-mask="2" required></input>
+				</div>
+				
+				<!-- {{formData.valorTotal}} -->
+			<div class="col-md-6">
+				<label>Data de Entrada</label>
+	            <p class="input-group">
+	              
+	              <input type="date" class="form-control input-lg" datepicker-popup ng-model="formData.dataDeEntrada" ng-model-options="{ timezone: 'UTC' }" is-open="opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+	              <!-- {{formData.dataDeEntrada}} -->
+	              <span class="input-group-btn">
+	                <button type="button" class="btn btn-lg" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+	              </span>
+	            </p>
+	            
+	        </div>
+	        <div class="col-md-6">
+	        	<label>Data de Saída</label>
+	            <p class="input-group">
+	              <input type="date" class="form-control input-lg" datepicker-popup ng-model="formData.dataDeSaida" ng-model-options="{ timezone: 'UTC' }" is-open="opened2" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+	              <span class="input-group-btn">
+	                <button type="button" class="btn btn-lg" ng-click="open2($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+	              </span>
+	            </p>
+	            
+	        </div>
+
+			<!-- createToDo() WILL CREATE NEW TODOS -->
+			<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
+		</form>
+	</div>
+</div>

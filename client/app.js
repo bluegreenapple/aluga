@@ -99,6 +99,17 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider) {
       }
     })
 
+    // estado para aluguel novo
+    .state('dashboard.alugueis.novo', {    
+      url: '/novo',
+      views: {
+        '': { 
+          templateUrl: 'partials/alugueis.novo.html',
+          controller: 'AlugueisCtrl'
+        }
+      }
+    })
+
     // estado para popups e sliders laterais
     .state('dashboard.alugueis.editar', {
       url: '/editar',      
