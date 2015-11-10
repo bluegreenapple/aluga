@@ -167,7 +167,14 @@
     <td>{{aluguel.valorTotal}}</td>
     <td>{{aluguel.dataDeEntrada | date: "dd/MM/yyyy" : "UTC"}}</td>
     <td>{{aluguel.dataDeSaida | date: "dd/MM/yyyy" : "UTC"}}</td>
-    <td><a ui-sref="dashboard.alugueis.aluguel({aluguelid: aluguel._id, aluguel: aluguel})">editar</a></td>
+    <!-- <td><a ui-sref="dashboard.alugueis.aluguel({aluguelid: aluguel._id, aluguel: aluguel})">editar</a></td> -->
+    <td>
+      <a ui-sref="dashboard.alugueis.aluguel({aluguelid: aluguel._id, aluguel: aluguel})"><button class="glyphicon glyphicon-pencil"></button></a>
+    </td>
+    <td>
+      <button class="glyphicon glyphicon-trash" ng-click="deleteTodo(aluguel._id)"></button>
+    </td>
+    <td><a class = "glyphicon glyphicon-download-alt" ng-href="/api/download/{{aluguel._id}}" target="_self"></A></td>
   </tr>
   </tbody>
   <tfoot>
