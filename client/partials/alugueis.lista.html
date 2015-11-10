@@ -3,7 +3,7 @@
 
 
 <!-- LISTA DE CONTRATOS -->
-<div ng-hide = 'isEditing'>
+<!-- <div ng-hide = 'isEditing'>
   <table tr-ng-grid="" items="todos" fields="['imovel', 'locador', 'locador_nomeAssinatura', 'text', 'valorTotal', 'dataDeEntrada', 'dataDeSaida']" page-items="20">
   <thead>
   <tr>
@@ -35,7 +35,7 @@
   
   <button type="button" class="btn btn-primary btn-lg" ng-click="bla()">new
       </button>
-</div>
+</div> -->
 <!-- FIM LISTA DE CONTRATOS -->
 
 
@@ -164,7 +164,7 @@
     <td>{{aluguel.text}}</td>
     <td>{{aluguel.locador}}</td>
     <td>{{aluguel.locador_nomeAssinatura}}</td>
-    <td>{{aluguel.valorTotal}}</td>
+    <td>{{aluguel.valorTotal | currency: "R$ "}}</td>
     <td>{{aluguel.dataDeEntrada | date: "dd/MM/yyyy" : "UTC"}}</td>
     <td>{{aluguel.dataDeSaida | date: "dd/MM/yyyy" : "UTC"}}</td>
     <!-- <td><a ui-sref="dashboard.alugueis.aluguel({aluguelid: aluguel._id, aluguel: aluguel})">editar</a></td> -->
