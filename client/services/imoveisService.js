@@ -4,6 +4,9 @@ angular.module('imovelService', [])
 	// each function returns a promise object 
 	.factory('Imoveis', ['$http',function($http) {
 		return {
+			getCep: function(cep) {
+				return $http.get('/api/imoveis/cep/' + cep);
+			},
 			get : function() {
 				return $http.get('/api/imoveis');
 			},

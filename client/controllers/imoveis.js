@@ -5,6 +5,21 @@ angular.module('MyApp')
 		$scope.formData.tipo = "Apartamento";
 		$scope.loading = true;
 		
+		// Imoveis.getCep('04060000')
+		// .success(function(data) {
+		// 	alert(data);
+		// 		console.log('endereco: ', data);
+		// 	});
+		$scope.buscaCep = function(){
+			Imoveis.getCep($scope.formData.cep)
+				.success(function(data) {
+					$scope.formData.logradouro = data.logradouro;
+					$scope.formData.bairro = data.bairro;
+					$scope.formData.cidade = data.cidade;
+					$scope.formData.uf = data.uf;
+					$scope.loading = false;
+				});
+        };
 		// GET =====================================================================
 		// when landing on the page, get all imoveis and show them
 		// use the service to get all the imoveis

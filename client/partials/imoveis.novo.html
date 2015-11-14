@@ -17,7 +17,7 @@
 
 				<div class="col-md-6">
 					<label>Cep</label>
-					<input type="text" class="form-control input-lg " ng-model="formData.cep" required autofocus></input>
+					<input type="text" class="form-control input-lg " ng-model="formData.cep" required autofocus ui-br-cep-mask ng-blur='buscaCep()'></input>
 				</div>
 
 				<div class="col-md-6">
@@ -27,7 +27,7 @@
 
 				<div class="col-md-6">
 					<label>Numero</label>
-					<input type="text" class="form-control input-lg " ng-model="formData.numero" required autofocus></input>
+					<input type="text" class="form-control input-lg " ng-model="formData.numero" required autofocus ui-number-mask='0'></input>
 				</div>
 
 				<div class="col-md-6">
@@ -62,12 +62,12 @@
 
 				<div class="col-md-6">
 					<label>N Vagas</label>
-					<input type="text" class="form-control input-lg " ng-model="formData.nVagas" required></input>
+					<input type="text" class="form-control input-lg " ng-model="formData.nVagas" required ui-number-mask='0'></input>
 				</div>
 
 				<div class="col-md-6">
 					<label>N Pessoas</label>
-					<input type="text" class="form-control input-lg " ng-model="formData.nPessoas" required></input>
+					<input type="text" class="form-control input-lg " ng-model="formData.nPessoas" required ui-number-mask='0'></input>
 				</div>
 
 				<div class="col-md-6">

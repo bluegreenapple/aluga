@@ -1,6 +1,7 @@
 var Todo = require('./models/todo');
 var Imovel = require('./models/imovel');
 var word = require('./services/wordServiceServer.js');
+var cep = require('cep-brazil');
 
 function getTodos(res){
 	Todo.find(function(err, todos) {
@@ -138,6 +139,27 @@ module.exports = function(app) {
 	// });
 
 	//IMOVEIS api ---------------------------------------------------------------------
+	// get cep (necessario proxy para obter cep por causa de CORS nas apis)
+	app.get('/api/imoveis/cep/:cep', function(req, res) {
+
+		cep.get(req.params.cep)
+		  .then(function (data) {
+		    var data2 = 
+		    {
+		    	'logradouro': data.street,
+		    	'bairro': data.district,
+		    	'cidade': data.city,
+		    	'uf': data.state,
+		    	'cep': data.zipCode,
+		    };
+		    
+		    res.json(data2);
+		     
+		  }).fail(function(err) {
+		      res.json(err);
+		  });
+	});
+
 	// get all imoveis
 	app.get('/api/imoveis', function(req, res) {
 
