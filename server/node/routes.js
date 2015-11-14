@@ -144,9 +144,21 @@ module.exports = function(app) {
 
 		cep.get(req.params.cep)
 		  .then(function (data) {
+
+		  	//logica para remover ' - até 499/500' que aparece em alguns jsons dos correios
+		  	var logradouro = data.street;
+		  	var iLog = logradouro.indexOf(" - até ");
+		  	
+		  	console.log(iLog);
+		  	if (iLog > -1) 
+		  	{
+		  		logradouro = logradouro.substring(0,iLog);
+		  		console.log(logradouro);
+		  	}
+
 		    var data2 = 
 		    {
-		    	'logradouro': data.street,
+		    	'logradouro': logradouro,
 		    	'bairro': data.district,
 		    	'cidade': data.city,
 		    	'uf': data.state,
