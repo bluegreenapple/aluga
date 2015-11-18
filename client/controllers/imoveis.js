@@ -15,7 +15,7 @@ angular.module('MyApp')
 				.success(function(data) {
 					$scope.formData.logradouro = data.logradouro;
 					$scope.formData.bairro = data.bairro;
-					$scope.formData.cidade = data.cidade;
+					$scope.formData.localidade = data.cidade;
 					$scope.formData.uf = data.uf;
 					$scope.loading = false;
 				});

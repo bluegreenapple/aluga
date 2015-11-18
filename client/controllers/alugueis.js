@@ -1,5 +1,5 @@
 angular.module('MyApp')
-	.controller('AlugueisCtrl', ['$scope','$stateParams','$state','$http','Todos', function($scope,$stateParams,$state, $http, Todos) {
+	.controller('AlugueisCtrl', ['$scope','$stateParams','$state','$http','Todos','Imoveis', function($scope,$stateParams,$state, $http, Todos, Imoveis) {
 
 	if ($stateParams.aluguelid) 
 	{
@@ -44,6 +44,14 @@ angular.module('MyApp')
 	      return $scope.user.groupName;
 	    }
   	};
+
+  	Imoveis.get()
+	    .success(function(data) {
+	    	console.log(data);
+	    	$scope.imoveis2 = data;  
+	    });
+	    
+  	// $scope.imoveis2 = ;
 
   	$scope.imoveis = [
 	    {value: 'Ev64', nome: 'Ev64'},

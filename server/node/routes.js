@@ -148,12 +148,16 @@ module.exports = function(app) {
 		  	//logica para remover ' - até 499/500' que aparece em alguns jsons dos correios
 		  	var logradouro = data.street;
 		  	var iLog = logradouro.indexOf(" - até ");
-		  	
-		  	console.log(iLog);
 		  	if (iLog > -1) 
 		  	{
 		  		logradouro = logradouro.substring(0,iLog);
-		  		console.log(logradouro);
+		  		// console.log(logradouro);
+		  	}
+		  	var iLog2 = logradouro.indexOf(" - de ");
+		  	if (iLog2 > -1) 
+		  	{
+		  		logradouro = logradouro.substring(0,iLog2);
+		  		// console.log(logradouro);
 		  	}
 
 		    var data2 = 
@@ -210,7 +214,7 @@ module.exports = function(app) {
 			nVagas: req.body.nVagas,
 			valorFaxina: req.body.valorFaxina,
 			zelador: req.body.zelador,
-			createdAt: req.body.createdAt,
+			createdAt: new Date(),
 			updatedAt: req.body.updatedAt,
 			
 			done : false
@@ -246,7 +250,7 @@ module.exports = function(app) {
 			imovel.valorFaxina= req.body.valorFaxina;
 			imovel.zelador= req.body.zelador;
 			imovel.createdAt= req.body.createdAt;
-			imovel.updatedAt= req.body.updatedAt;
+			imovel.updatedAt= new Date();
 
             // save the imovel
             imovel.save(function(err) {
