@@ -14,8 +14,8 @@ module.exports = mongoose.model('Imovel', {
 	nVagas: { type: String, default:''},
 	valorFaxina: { type: String, default:''},
 	zelador: { type: String, default:''},//Sr. Joao Silva
-	createdAt: { type: Date, default: Date.now },
-	updatedAt: { type: Date, default: Date.now },
+	createdAt: { type: Date},
+	updatedAt: { type: Date},
 
 	// horarioDeEntrada: { type: time, default: },
 	// horarioDeSaida: { type: time, default: }

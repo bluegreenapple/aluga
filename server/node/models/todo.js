@@ -9,7 +9,8 @@ module.exports = mongoose.model('Todo', {
 	valorTotal: { type: String, default:''},
 	dataDeEntrada: { type: Date, default: Date.now },
 	dataDeSaida: { type: Date, default: Date.now },
-
+	createdAt: { type: Date},
+	updatedAt: { type: Date},
 	// horarioDeEntrada: { type: time, default: },
 	// horarioDeSaida: { type: time, default: }
 });

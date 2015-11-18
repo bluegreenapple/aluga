@@ -78,6 +78,7 @@ module.exports = function(app) {
 			dataDeEntrada: req.body.dataDeEntrada,
 			dataDeSaida: req.body.dataDeSaida,
 			valorTotal: req.body.valorTotal,
+			createdAt: new Date(),
 			// horarioDeEntrada: req.body.horarioDeEntrada,
 			// horarioDeSaida: req.body.horarioDeSaida,
 			done : false
@@ -108,7 +109,8 @@ module.exports = function(app) {
 			todo.dataDeEntrada= req.body.dataDeEntrada;
 			todo.dataDeSaida= req.body.dataDeSaida;
 			todo.valorTotal= req.body.valorTotal;
-
+			todo.updatedAt= new Date();
+			
             // save the todo
             todo.save(function(err) {
                 if (err)
@@ -215,7 +217,6 @@ module.exports = function(app) {
 			valorFaxina: req.body.valorFaxina,
 			zelador: req.body.zelador,
 			createdAt: new Date(),
-			updatedAt: req.body.updatedAt,
 			
 			done : false
 		}, function(err, imovel) {
@@ -249,7 +250,6 @@ module.exports = function(app) {
 			imovel.nVagas= req.body.nVagas;
 			imovel.valorFaxina= req.body.valorFaxina;
 			imovel.zelador= req.body.zelador;
-			imovel.createdAt= req.body.createdAt;
 			imovel.updatedAt= new Date();
 
             // save the imovel
