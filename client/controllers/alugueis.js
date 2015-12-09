@@ -1,5 +1,5 @@
 angular.module('MyApp')
-	.controller('AlugueisCtrl', ['$scope','$stateParams','$state','$http','Todos','Imoveis', function($scope,$stateParams,$state, $http, Todos, Imoveis) {
+	.controller('AlugueisCtrl', ['$scope','$filter','$stateParams','$state','$http','Todos','Imoveis', function($scope,$filter,$stateParams,$state, $http, Todos, Imoveis) {
 
 	if ($stateParams.aluguelid) 
 	{
@@ -24,33 +24,57 @@ angular.module('MyApp')
 	
 
 	//imoveis
-	$scope.groups = [];
-	$scope.loadGroups = function() {
-		return $scope.groups.length ? null : $http.get('/groups').success(function(data) {
-			$scope.groups = data;
+	$scope.imoveis = [];
+	$scope.loadImoveis = function() {
+		console.log('aa');
+		// console.log('loadimoveis0: ',$scope.imoveis);
+		return $scope.imoveis.length ? null : Imoveis.get().success(function(data) {
+			$scope.imoveis = data;
+			console.log('loadimoveis1: ',$scope.imoveis);
 		});
 	};
 
 
 	$scope.showImoveis = function() 
 	{
-	    if($scope.imoveis.length) 
-	    {
-	      var selected = $filter('filter')($scope.imoveis, {id: $scope.user.group});
-	      return selected.length ? selected[0].text : 'Not set';
-	    } 
-	    else 
-	    {
-	      return $scope.user.groupName;
-	    }
+	    // if($scope.imoveis.length) 
+	    // {
+	    //   var selected = $filter('filter')($scope.imoveis, {nome: $scope.aluguel.text});
+	    //   return selected.length ? selected[0].text : 'Not set';
+	    // } 
+	    // else 
+	    // {
+	    //   return $scope.aluguel.text;
+	    // }
   	};
 
+
+ 
+	$scope.imoveis2 = [];
   	Imoveis.get()
 	    .success(function(data) {
-	    	console.log(data);
+	    	// console.log(data);
 	    	$scope.imoveis2 = data;  
 	    });
 	    
+
+ 	$scope.showImovel = function() {
+		if($scope.imoveis2.length) {
+		  var selected = [];
+	      var selected = $filter('filter')($scope.imoveis2, {idNome: $scope.aluguel.imovel});
+	      return selected.length ? selected[0].idNome : 'Not set';
+	    } else {
+	      return 'lalala';//$scope.user.groupName;
+	    }
+   //  if($scope.imoveis2.length) {
+	  // var selected = [];
+   //    var selected = $filter('filter')($scope.imoveis2, {idNome: $scope.aluguel.imovel});
+   //    return selected.length ? selected[0].idNome : 'Not set';
+   //  } else {
+   //    return 'lalala';//$scope.user.groupName;
+   //  }
+  };
+    
   	// $scope.imoveis2 = ;
 
   	$scope.imoveis = [

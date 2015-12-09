@@ -14,8 +14,18 @@
     <div>
       <!-- editable username (text with validation) -->
       <span class="title">Nome:</span>
-      <span editable-text="aluguel.text" e-name="text" onbeforesave="checkName($data)" e-required>{{ aluguel.text || 'empty' }}</span>
-    </div> 
+      <span editable-text="aluguel.text" e-name="text" onbeforesave="checkName($data)" e-required>{{ aluguel.text || 'empty' }}
+
+      </span>
+    </div>
+
+
+    <!-- <div>
+      <span class="title">Nome: </span>
+      <span editable-select="aluguel.text" e-name="text" onshow="loadImoveis()" e-ng-options="imovel.nome as imovel.nome for imovel in imoveis">
+        {{ showImoveis() }}
+      </span>
+    </div>  -->
 
     <!-- <div>
       <span class="title">imovel:</span>
@@ -38,6 +48,17 @@
       <span class="title">Imovel: </span>
       <span editable-select="aluguel.imovel" e-name="imovel" e-ng-options="s.value as s.nome for s in imoveis">
         {{ aluguel.imovel || 'empty' }}
+
+
+      </span>
+    </div>  
+
+    <div>
+      <span class="title">Imovel2: </span>
+      <span editable-select="aluguel.imovel" e-name="imovel" e-ng-options="s.idNome as s.idNome for s in imoveis2">
+        {{ aluguel.imovel || 'empty' }}
+
+        <!-- {{ showImovel() }} -->
       </span>
     </div>  
 

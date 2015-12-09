@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 module.exports = mongoose.model('Imovel', {
 	tipo : {type : String, default: ''},//casa, apto, condomínio
 	nome: { type: String, default: ''},//edificio flores
+	idNome: { type: String, default: ''},//ev64 (para identificar dentro do site)
 	cep: { type: String, default: ''},
 	logradouro: { type: String, default: ''},
 	numero: { type: String, default: ''},
@@ -16,6 +17,7 @@ module.exports = mongoose.model('Imovel', {
 	zelador: { type: String, default:''},//Sr. Joao Silva
 	createdAt: { type: Date},
 	updatedAt: { type: Date},
+	createdBy: { type: String, default:''},
 
 	// horarioDeEntrada: { type: time, default: },
 	// horarioDeSaida: { type: time, default: }
