@@ -100,8 +100,27 @@
 	                <button type="button" class="btn btn-lg" ng-click="open2($event)"><i class="glyphicon glyphicon-calendar"></i></button>
 	              </span>
 	            </p>
-	            
 	        </div>
+
+	        <div class="col-md-6">
+	        	<label>Horario de Entrada:</label>
+	            <p class="input-group">
+	              <timepicker ng-model="formData.horarioDeEntrada" ng-model-options="{ timezone: 'UTC' }" show-meridian="false">
+			     </timepicker>
+	            </p>
+	        </div>
+	        
+	        <div class="col-md-6">
+	        	<label>Horario de Saída:</label>
+	            <p class="input-group">
+	              <timepicker ng-model="formData.horarioDeSaida" ng-model-options="{ timezone: 'UTC' }" show-meridian="false">
+			     </timepicker>
+	            </p>
+	        </div>
+
+	        
+
+
 
 			<!-- createToDo() WILL CREATE NEW TODOS -->
 			<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>

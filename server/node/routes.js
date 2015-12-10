@@ -79,8 +79,8 @@ module.exports = function(app) {
 			dataDeSaida: req.body.dataDeSaida,
 			valorTotal: req.body.valorTotal,
 			createdAt: new Date(),
-			// horarioDeEntrada: req.body.horarioDeEntrada,
-			// horarioDeSaida: req.body.horarioDeSaida,
+			horarioDeEntrada: req.body.horarioDeEntrada,
+			horarioDeSaida: req.body.horarioDeSaida,
 			done : false
 		}, function(err, todo) {
 			if (err)
@@ -110,6 +110,8 @@ module.exports = function(app) {
 			todo.dataDeSaida= req.body.dataDeSaida;
 			todo.valorTotal= req.body.valorTotal;
 			todo.updatedAt= new Date();
+			todo.horarioDeEntrada = req.body.horarioDeEntrada;
+			todo.horarioDeSaida = req.body.horarioDeSaida;
 			
             // save the todo
             todo.save(function(err) {
@@ -217,6 +219,8 @@ module.exports = function(app) {
 			valorFaxina: req.body.valorFaxina,
 			zelador: req.body.zelador,
 			createdAt: new Date(),
+			horarioDeEntradaPadrao: req.body.horario,
+			horarioDeSaidaPadrao: req.body.zelador,
 			
 			done : false
 		}, function(err, imovel) {
@@ -251,6 +255,8 @@ module.exports = function(app) {
 			imovel.valorFaxina= req.body.valorFaxina;
 			imovel.zelador= req.body.zelador;
 			imovel.updatedAt= new Date();
+			imovel.horarioDeEntradaPadrao= req.body.horario;
+			imovel.horarioDeSaidaPadrao= req.body.zelador;
 
             // save the imovel
             imovel.save(function(err) {

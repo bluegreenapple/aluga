@@ -10,7 +10,7 @@
 <pre>{{aluguel | json}}</pre>
 <pre>{{aluguelid}}</pre>
 
-<form editable-form name="editableForm" onaftersave="update()">
+<form editable-form name="editableForm" onaftersave="update()"> 
     <div>
       <!-- editable username (text with validation) -->
       <span class="title">Nome:</span>
@@ -110,7 +110,15 @@
       <span editable-date="aluguel.dataDeSaida"  e-name="dataDeSaida" e-ng-model-options="{ timezone: 'UTC' }" onbeforesave="checkName($data)" e-required> {{ aluguel.dataDeSaida || 'empty' | date:'dd/MM/yyyy' : "UTC"}}</span>
     </div> 
 
-   
+    <div>
+      <span class="title">horarioDeSaida:</span>
+       <e-timepicker e-ng-model="aluguel.dataDeSaida" e-show-meridian="false">
+       {{ aluguel.dataDeSaida || 'empty' | date:'HH:mm' : "UTC"}}
+     </timepicker>
+    </div> 
+
+
+    
 
 
 

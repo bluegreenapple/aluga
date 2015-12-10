@@ -18,7 +18,6 @@ module.exports = mongoose.model('Imovel', {
 	createdAt: { type: Date},
 	updatedAt: { type: Date},
 	createdBy: { type: String, default:''},
-
-	// horarioDeEntrada: { type: time, default: },
-	// horarioDeSaida: { type: time, default: }
+	horarioDeEntradaPadrao: { type: Date },
+	horarioDeSaidaPadrao: { type: Date }
 });

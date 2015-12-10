@@ -151,6 +151,12 @@ angular.module('MyApp')
 		$scope.formData.locador = "TaiYang";
 		$scope.formData.locador_nomeAssinatura = "Rony";
 		$scope.formData.locador_conta = "TaiYang_BB";
+		$scope.formData.horarioDeSaida = new Date();
+		$scope.formData.horarioDeSaida.setHours(12);
+		$scope.formData.horarioDeSaida.setMinutes(0);
+		$scope.formData.horarioDeEntrada = new Date();
+		$scope.formData.horarioDeEntrada.setHours(12);
+		$scope.formData.horarioDeEntrada.setMinutes(0);
 		$scope.loading = true;
 		$scope.isEditing = false;
 		// GET =====================================================================
@@ -193,6 +199,12 @@ angular.module('MyApp')
 						$scope.formData.locador = "TaiYang";
 						$scope.formData.locador_nomeAssinatura = "Rony";
 						$scope.formData.locador_conta = "TaiYang_BB";
+						$scope.formData.horarioDeSaida = new Date();
+						$scope.formData.horarioDeSaida.setHours(12);
+						$scope.formData.horarioDeSaida.setMinutes(0);
+						$scope.formData.horarioDeEntrada = new Date();
+						$scope.formData.horarioDeEntrada.setHours(12);
+						$scope.formData.horarioDeEntrada.setMinutes(0);
 						$scope.todos = data; // assign our new list of todos
 					});
 			}
