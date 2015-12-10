@@ -47,8 +47,12 @@
 
 				<div class="col-md-6">
 					<label>UF</label>
-					<input type="text" class="form-control input-lg " ng-model="formData.uf" required autofocus></input>
+
+					<select class="form-control input-lg " ng-model="formData.uf" ng-options="uf for uf in ufs">
+			      	</select>
 				</div>
+
+
 
 				<div class="col-md-6">
 					<label>Nome</label>

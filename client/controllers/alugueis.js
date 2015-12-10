@@ -24,15 +24,15 @@ angular.module('MyApp')
 	
 
 	//imoveis
-	$scope.imoveis = [];
-	$scope.loadImoveis = function() {
-		console.log('aa');
-		// console.log('loadimoveis0: ',$scope.imoveis);
-		return $scope.imoveis.length ? null : Imoveis.get().success(function(data) {
-			$scope.imoveis = data;
-			console.log('loadimoveis1: ',$scope.imoveis);
-		});
-	};
+	// $scope.imoveis = [];
+	// $scope.loadImoveis = function() {
+	// 	console.log('aa');
+	// 	// console.log('loadimoveis0: ',$scope.imoveis);
+	// 	return $scope.imoveis.length ? null : Imoveis.get().success(function(data) {
+	// 		$scope.imoveis = data;
+	// 		console.log('loadimoveis1: ',$scope.imoveis);
+	// 	});
+	// };
 
 
 	$scope.showImoveis = function() 

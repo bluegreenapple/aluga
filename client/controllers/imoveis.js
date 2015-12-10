@@ -20,6 +20,9 @@ angular.module('MyApp')
 					$scope.loading = false;
 				});
         };
+
+        $scope.ufs = ['AC','AL','AM','AP','BA','CE','DF','ES','GO','MA','MG','MS','MT','PA','PB','PE','PI','PR','RJ','RN','RO','RR','RS','SC','SE','SP','TO'];
+
 		// GET =====================================================================
 		// when landing on the page, get all imoveis and show them
 		// use the service to get all the imoveis
