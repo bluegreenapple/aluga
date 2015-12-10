@@ -105,17 +105,15 @@
     </div> 
 
     <div>
-      <!-- editable username (text with validation) -->
       <span class="title">dataDeSaida:</span>
       <span editable-date="aluguel.dataDeSaida"  e-name="dataDeSaida" e-ng-model-options="{ timezone: 'UTC' }" onbeforesave="checkName($data)" e-required> {{ aluguel.dataDeSaida || 'empty' | date:'dd/MM/yyyy' : "UTC"}}</span>
     </div> 
 
-    <div>
+    <!-- <div>
       <span class="title">horarioDeSaida:</span>
-       <e-timepicker e-ng-model="aluguel.dataDeSaida" e-show-meridian="false">
-       {{ aluguel.dataDeSaida || 'empty' | date:'HH:mm' : "UTC"}}
-     </timepicker>
-    </div> 
+      <span editable-bstime="aluguel.horarioDeSaida" e-datepickerLocaldateDirective e-show-meridian="false"  e-name="horarioDeSaida" e-ng-model-options="{ timezone: 'UTC' }" onbeforesave="checkName($data)" e-required> {{ aluguel.horarioDeSaida || 'empty' | date:'HH:mm' : "UTC"}}</span>
+    </div>  -->
+    
 
 
     
