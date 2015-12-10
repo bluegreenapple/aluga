@@ -219,8 +219,8 @@ module.exports = function(app) {
 			valorFaxina: req.body.valorFaxina,
 			zelador: req.body.zelador,
 			createdAt: new Date(),
-			horarioDeEntradaPadrao: req.body.horario,
-			horarioDeSaidaPadrao: req.body.zelador,
+			horarioDeEntradaPadrao: req.body.horarioDeEntradaPadrao,
+			horarioDeSaidaPadrao: req.body.horarioDeSaidaPadrao,
 			
 			done : false
 		}, function(err, imovel) {
@@ -255,8 +255,8 @@ module.exports = function(app) {
 			imovel.valorFaxina= req.body.valorFaxina;
 			imovel.zelador= req.body.zelador;
 			imovel.updatedAt= new Date();
-			imovel.horarioDeEntradaPadrao= req.body.horario;
-			imovel.horarioDeSaidaPadrao= req.body.zelador;
+			imovel.horarioDeEntradaPadrao= req.body.horarioDeEntradaPadrao;
+			imovel.horarioDeSaidaPadrao= req.body.horarioDeSaidaPadrao;
 
             // save the imovel
             imovel.save(function(err) {

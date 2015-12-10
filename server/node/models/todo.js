@@ -11,6 +11,6 @@ module.exports = mongoose.model('Todo', {
 	dataDeSaida: { type: Date, default: Date.now },
 	createdAt: { type: Date},
 	updatedAt: { type: Date},
-	horarioDeEntrada: { type: Date },
-	horarioDeSaida: { type: Date }
+	horarioDeEntrada: { type: Date, default: new Date('2015-01-01T12:00:00')},
+	horarioDeSaida: { type: Date, default: new Date('2015-01-01T12:00:00')}
 });

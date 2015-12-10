@@ -146,19 +146,23 @@ angular.module('MyApp')
 	  };
 
 
-		$scope.formData = {};
-		$scope.formData.imovel = "Ev64";
-		$scope.formData.locador = "TaiYang";
-		$scope.formData.locador_nomeAssinatura = "Rony";
-		$scope.formData.locador_conta = "TaiYang_BB";
-		$scope.formData.horarioDeSaida = new Date();
-		$scope.formData.horarioDeSaida.setHours(12);
-		$scope.formData.horarioDeSaida.setMinutes(0);
-		$scope.formData.horarioDeEntrada = new Date();
-		$scope.formData.horarioDeEntrada.setHours(12);
-		$scope.formData.horarioDeEntrada.setMinutes(0);
-		$scope.loading = true;
-		$scope.isEditing = false;
+		$scope.resetForm = function() {
+	    	$scope.formData = {};
+			$scope.formData.imovel = "Ev64";
+			$scope.formData.locador = "TaiYang";
+			$scope.formData.locador_nomeAssinatura = "Rony";
+			$scope.formData.locador_conta = "TaiYang_BB";
+			$scope.formData.horarioDeSaida = new Date();
+			$scope.formData.horarioDeSaida.setHours(12);
+			$scope.formData.horarioDeSaida.setMinutes(0);
+			$scope.formData.horarioDeEntrada = new Date();
+			$scope.formData.horarioDeEntrada.setHours(12);
+			$scope.formData.horarioDeEntrada.setMinutes(0);
+			$scope.loading = true;
+	  	};
+
+	  	$scope.resetForm();
+
 		// GET =====================================================================
 		// when landing on the page, get all todos and show them
 		// use the service to get all the todos
@@ -193,18 +197,7 @@ angular.module('MyApp')
 
 					// if successful creation, call our get function to get all the new todos
 					.success(function(data) {
-						$scope.loading = false;
-						$scope.formData = {}; // clear the form so our user is ready to enter another
-						$scope.formData.imovel = "Ev64";
-						$scope.formData.locador = "TaiYang";
-						$scope.formData.locador_nomeAssinatura = "Rony";
-						$scope.formData.locador_conta = "TaiYang_BB";
-						$scope.formData.horarioDeSaida = new Date();
-						$scope.formData.horarioDeSaida.setHours(12);
-						$scope.formData.horarioDeSaida.setMinutes(0);
-						$scope.formData.horarioDeEntrada = new Date();
-						$scope.formData.horarioDeEntrada.setHours(12);
-						$scope.formData.horarioDeEntrada.setMinutes(0);
+						$scope.resetForm();
 						$scope.todos = data; // assign our new list of todos
 					});
 			}

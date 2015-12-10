@@ -1,15 +1,21 @@
 angular.module('MyApp')
 	.controller('ImoveisCtrl', ['$scope','$stateParams','$state','$http','Imoveis', function($scope,$stateParams,$state, $http, Imoveis) {
-
-		$scope.formData = {};
-		$scope.formData.tipo = "Apartamento";
-		$scope.loading = true;
 		
-		// Imoveis.getCep('04060000')
-		// .success(function(data) {
-		// 	alert(data);
-		// 		console.log('endereco: ', data);
-		// 	});
+		$scope.resetForm = function() {
+	    	$scope.formData = {};
+			$scope.formData.tipo = "Apartamento";
+			
+			$scope.formData.horarioDeSaidaPadrao = new Date();
+			$scope.formData.horarioDeSaidaPadrao.setHours(12);
+			$scope.formData.horarioDeSaidaPadrao.setMinutes(0);
+			$scope.formData.horarioDeEntradaPadrao = new Date();
+			$scope.formData.horarioDeEntradaPadrao.setHours(12);
+			$scope.formData.horarioDeEntradaPadrao.setMinutes(0);
+
+			$scope.loading = true;
+	  	};
+		$scope.resetForm();
+
 		$scope.buscaCep = function(){
 			Imoveis.getCep($scope.formData.cep)
 				.success(function(data) {
@@ -45,9 +51,7 @@ angular.module('MyApp')
 
 					// if successful creation, call our get function to get all the new imoveis
 					.success(function(data) {
-						$scope.loading = false;
-						$scope.formData = {}; // clear the form so our user is ready to enter another
-						$scope.formData.tipo = "Apartamento";
+						$scope.resetForm();
 						$scope.imoveis = data; // assign our new list of imoveis
 					});
 			// }
