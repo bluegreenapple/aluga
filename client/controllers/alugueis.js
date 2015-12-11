@@ -40,6 +40,13 @@ angular.module('MyApp')
           $scope.user = data;
           console.log('user returned',$scope.user);
           updateIsLoading();
+
+          Todos.getByCreatorId($scope.user._id)
+			.success(function(data) {
+				$scope.todos = data;
+				$scope.loading = false;
+				console.log('todos returned',$scope.todos);
+			});
         })
 
  
@@ -160,11 +167,11 @@ angular.module('MyApp')
 		// GET =====================================================================
 		// when landing on the page, get all todos and show them
 		// use the service to get all the todos
-		Todos.get()
-			.success(function(data) {
-				$scope.todos = data;
-				$scope.loading = false;
-			});
+		// Todos.get()
+		// 	.success(function(data) {
+		// 		$scope.todos = data;
+		// 		$scope.loading = false;
+		// 	});
 
 		// GETTERS
 		//added for smarttable sort does not work with date strings
