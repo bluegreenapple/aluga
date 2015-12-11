@@ -79,6 +79,7 @@ module.exports = function(app) {
 			dataDeSaida: req.body.dataDeSaida,
 			valorTotal: req.body.valorTotal,
 			createdAt: new Date(),
+			createdBy: req.body.createdBy,
 			horarioDeEntrada: req.body.horarioDeEntrada,
 			horarioDeSaida: req.body.horarioDeSaida,
 			done : false
@@ -110,6 +111,7 @@ module.exports = function(app) {
 			todo.dataDeSaida= req.body.dataDeSaida;
 			todo.valorTotal= req.body.valorTotal;
 			todo.updatedAt= new Date();
+			todo.createdBy= req.body.createdBy;
 			todo.horarioDeEntrada = req.body.horarioDeEntrada;
 			todo.horarioDeSaida = req.body.horarioDeSaida;
 			
@@ -219,6 +221,7 @@ module.exports = function(app) {
 			valorFaxina: req.body.valorFaxina,
 			zelador: req.body.zelador,
 			createdAt: new Date(),
+			createdBy: req.body.createdBy,
 			horarioDeEntradaPadrao: req.body.horarioDeEntradaPadrao,
 			horarioDeSaidaPadrao: req.body.horarioDeSaidaPadrao,
 			
@@ -255,6 +258,7 @@ module.exports = function(app) {
 			imovel.valorFaxina= req.body.valorFaxina;
 			imovel.zelador= req.body.zelador;
 			imovel.updatedAt= new Date();
+			imovel.createdBy= req.body.createdBy;
 			imovel.horarioDeEntradaPadrao= req.body.horarioDeEntradaPadrao;
 			imovel.horarioDeSaidaPadrao= req.body.horarioDeSaidaPadrao;
 

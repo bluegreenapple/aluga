@@ -1,10 +1,31 @@
 angular.module('MyApp')
-	.controller('ImoveisCtrl', ['$scope','$stateParams','$state','$http','Imoveis', function($scope,$stateParams,$state, $http, Imoveis) {
+	.controller('ImoveisCtrl', ['$scope','$stateParams','$state','$http','Imoveis','Account', function($scope,$stateParams,$state, $http, Imoveis,Account) {
 		
+		var updateLoading = function() {
+	    	if (angular.isDefined( $scope.user)) {
+				$scope.isLoading = false;
+				console.log('isLoading=false');	
+			}
+			else{
+				$scope.isLoading = true;
+				console.log('isLoading=true');	
+			}
+	  	};
+
+		Account.getProfile()
+	        .success(function(data) {
+	          $scope.user = data;
+	          console.log('user returned',$scope.user);
+	          updateLoading();
+	        })
+
+	    
+
 		$scope.resetForm = function() {
 	    	$scope.formData = {};
 			$scope.formData.tipo = "Apartamento";
-			
+			// $scope.formData.createdBy = $scope.user._id;
+			// console.log('createdBy reset:',$scope.formData.createdBy);
 			$scope.formData.horarioDeSaidaPadrao = new Date();
 			$scope.formData.horarioDeSaidaPadrao.setHours(12);
 			$scope.formData.horarioDeSaidaPadrao.setMinutes(0);
@@ -12,9 +33,15 @@ angular.module('MyApp')
 			$scope.formData.horarioDeEntradaPadrao.setHours(12);
 			$scope.formData.horarioDeEntradaPadrao.setMinutes(0);
 
-			$scope.loading = true;
+			updateLoading();
+			
 	  	};
+
+	  	
+
 		$scope.resetForm();
+
+
 
 		$scope.buscaCep = function(){
 			Imoveis.getCep($scope.formData.cep)
@@ -45,7 +72,8 @@ angular.module('MyApp')
 			// if form is empty, nothing will happen
 			// if ($scope.formData.text != undefined) {
 				$scope.loading = true;
-
+				$scope.formData.createdBy = $scope.user._id;
+				console.log('createdBy em createImovel:',$scope.user);
 				// call the create function from our service (returns a promise object)
 				Imoveis.create($scope.formData)
 
