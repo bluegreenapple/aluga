@@ -65,6 +65,21 @@ module.exports = function(app) {
 		});
 	});
 
+	// get all todos from a specific creator
+	app.get('/api/todos/creatorid/:creator_id', function(req, res) {
+
+		// use mongoose to get one specific todo in the database
+		Todo.find({createdBy : req.params.creator_id}, function(err, todo) {
+
+			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
+			if (err)
+				res.send(err)
+
+			res.json(todo); // return the todo in JSON format
+		});
+	});
+
+
 	// create todo and send back all todos after creation
 	app.post('/api/todos', function(req, res) {
 
@@ -200,6 +215,20 @@ module.exports = function(app) {
 				res.send(err)
 
 			res.json(imovel); // return the imovel in JSON format
+		});
+	});
+
+	// get all todos from a specific creator
+	app.get('/api/imoveis/creatorid/:creator_id', function(req, res) {
+
+		// use mongoose to get one specific todo in the database
+		Imovel.find({createdBy : req.params.creator_id}, function(err, imovel) {
+
+			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
+			if (err)
+				res.send(err)
+
+			res.json(imovel); // return the todo in JSON format
 		});
 	});
 

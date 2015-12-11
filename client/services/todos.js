@@ -19,6 +19,9 @@ angular.module('todoService', [])
 			getId : function(id) {
 				return $http.get('/api/todos/' + id);
 			},
+			getByCreatorId : function(creatorId) {
+				return $http.get('/api/todos/creatorId/' + creatorId);
+			},
 			downloadContract : function(id) {
 				console.log('ieieiei');
 				return $http.get('/api/download');

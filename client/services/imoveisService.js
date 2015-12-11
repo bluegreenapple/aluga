@@ -22,5 +22,8 @@ angular.module('imovelService', [])
 			getId : function(id) {
 				return $http.get('/api/imoveis/' + id);
 			},
+			getByCreatorId : function(creatorId) {
+				return $http.get('/api/imoveis/creatorId/' + creatorId);
+			},
 		}
 	}]);
