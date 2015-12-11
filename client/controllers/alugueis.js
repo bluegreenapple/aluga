@@ -1,5 +1,5 @@
 angular.module('MyApp')
-	.controller('AlugueisCtrl', ['$scope','$filter','$stateParams','$state','$http','Todos','Imoveis', function($scope,$filter,$stateParams,$state, $http, Todos, Imoveis) {
+	.controller('AlugueisCtrl', ['$scope','$filter','$stateParams','$state','$http','Todos','Imoveis','Account', function($scope,$filter,$stateParams,$state, $http, Todos, Imoveis, Account) {
 
 	if ($stateParams.aluguelid) 
 	{
@@ -22,32 +22,25 @@ angular.module('MyApp')
 		$scope.aluguel.dataDeSaida = new Date($scope.aluguel.dataDeSaida);
 	};
 	
-
-	//imoveis
-	// $scope.imoveis = [];
-	// $scope.loadImoveis = function() {
-	// 	console.log('aa');
-	// 	// console.log('loadimoveis0: ',$scope.imoveis);
-	// 	return $scope.imoveis.length ? null : Imoveis.get().success(function(data) {
-	// 		$scope.imoveis = data;
-	// 		console.log('loadimoveis1: ',$scope.imoveis);
-	// 	});
-	// };
-
-
-	$scope.showImoveis = function() 
-	{
-	    // if($scope.imoveis.length) 
-	    // {
-	    //   var selected = $filter('filter')($scope.imoveis, {nome: $scope.aluguel.text});
-	    //   return selected.length ? selected[0].text : 'Not set';
-	    // } 
-	    // else 
-	    // {
-	    //   return $scope.aluguel.text;
-	    // }
+	//atualizar isLoading se ja tiver user ou nao
+	var updateIsLoading = function() {
+    	if (angular.isDefined( $scope.user)) {
+			$scope.isLoading = false;
+			console.log('isLoading=false');	
+		}
+		else{
+			$scope.isLoading = true;
+			console.log('isLoading=true');	
+		}
   	};
 
+  	//get user (para createTodo)
+	Account.getProfile()
+        .success(function(data) {
+          $scope.user = data;
+          console.log('user returned',$scope.user);
+          updateIsLoading();
+        })
 
  
 	$scope.imoveis2 = [];
@@ -152,13 +145,14 @@ angular.module('MyApp')
 			$scope.formData.locador = "TaiYang";
 			$scope.formData.locador_nomeAssinatura = "Rony";
 			$scope.formData.locador_conta = "TaiYang_BB";
+			
 			$scope.formData.horarioDeSaida = new Date();
 			$scope.formData.horarioDeSaida.setHours(12);
 			$scope.formData.horarioDeSaida.setMinutes(0);
 			$scope.formData.horarioDeEntrada = new Date();
 			$scope.formData.horarioDeEntrada.setHours(12);
 			$scope.formData.horarioDeEntrada.setMinutes(0);
-			$scope.loading = true;
+			updateIsLoading();
 	  	};
 
 	  	$scope.resetForm();
@@ -191,6 +185,9 @@ angular.module('MyApp')
 			// if form is empty, nothing will happen
 			if ($scope.formData.text != undefined) {
 				$scope.loading = true;
+
+				$scope.formData.createdBy = $scope.user._id;
+				console.log('createdBy em createImovel:',$scope.user);
 
 				// call the create function from our service (returns a promise object)
 				Todos.create($scope.formData)
