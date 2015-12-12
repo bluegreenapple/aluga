@@ -44,7 +44,8 @@ angular.module('MyApp')
 
 
 		$scope.buscaCep = function(){
-			Imoveis.getCep($scope.formData.cep)
+			if (angular.isDefined($scope.formData.cep)) {
+				Imoveis.getCep($scope.formData.cep)
 				.success(function(data) {
 					$scope.formData.logradouro = data.logradouro;
 					$scope.formData.bairro = data.bairro;
@@ -52,6 +53,8 @@ angular.module('MyApp')
 					$scope.formData.uf = data.uf;
 					$scope.loading = false;
 				});
+			};
+			
         };
 
         $scope.ufs = ['AC','AL','AM','AP','BA','CE','DF','ES','GO','MA','MG','MS','MT','PA','PB','PE','PI','PR','RJ','RN','RO','RR','RS','SC','SE','SP','TO'];
