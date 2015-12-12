@@ -34,6 +34,8 @@ angular.module('MyApp')
 		}
   	};
 
+  	
+
   	//get user (para createTodo)
 	Account.getProfile()
         .success(function(data) {
@@ -47,15 +49,16 @@ angular.module('MyApp')
 				$scope.loading = false;
 				console.log('todos returned',$scope.todos);
 			});
+
+		  Imoveis.getByCreatorId($scope.user._id)
+		    .success(function(data) {
+		    	// console.log(data);
+		    	$scope.imoveis2 = data;  
+		    });
         })
 
  
-	$scope.imoveis2 = [];
-  	Imoveis.get()
-	    .success(function(data) {
-	    	// console.log(data);
-	    	$scope.imoveis2 = data;  
-	    });
+	
 	    
 
  	$scope.showImovel = function() {
