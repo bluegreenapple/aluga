@@ -12,7 +12,9 @@
 
 				<div class="col-md-6">
 					<label>Tipo</label>
-					<input type="text" class="form-control input-lg " ng-model="formData.tipo" required autofocus></input>
+
+					<select class="form-control input-lg " ng-model="formData.tipo" ng-options="tipo for tipo in tipos">
+			      	</select>
 				</div>
 
 				<div class="col-md-6">
